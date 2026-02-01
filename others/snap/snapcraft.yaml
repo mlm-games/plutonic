@@ -1,9 +1,9 @@
-name: <placeholdername>
+name: plutonic
 base: core22
-version: '<PlaceHolderVersion>'
-summary: <PlaceHolderShortDesc>
+version: '1.0.1'
+summary: Suikalike game where you shoot planets in space
 description: |
-  <PlaceHolderLongDesc>
+  Suikalike game where you shoot planets in space
 
 grade: stable
 confinement: strict
@@ -13,13 +13,13 @@ architectures:
   - build-on: arm64
 
 apps:
-  <placeholdername>:
-    command: <placeholdername>
+  plutonic:
+    command: plutonic
     extensions: [gnome]
     plugs: [home, network, removable-media, unity7]
 
 parts:
-  <placeholdername>:
+  plutonic:
     plugin: dump
     source: ./builds/
     source-type: local
@@ -32,8 +32,8 @@ parts:
       - libpulse0
     override-build: |
       craftctl default
-      chmod +x $SNAPCRAFT_PART_INSTALL/<placeholdername>
+      chmod +x $SNAPCRAFT_PART_INSTALL/plutonic
 
 layout:
-  /usr/share/<placeholdername>:
-    bind: $SNAP/usr/share/<placeholdername>
+  /usr/share/plutonic:
+    bind: $SNAP/usr/share/plutonic

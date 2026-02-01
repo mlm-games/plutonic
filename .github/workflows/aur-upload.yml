@@ -16,18 +16,18 @@ jobs:
       - name: Download Linux x64 build from release
         run: |
           mkdir -p linux-build
-          wget -O linux-build/<placeholdername>.x86_64 "https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64"
+          wget -O linux-build/plutonic.x86_64 "https://github.com/mlm-games/plutonic/releases/download/${{ inputs.version_name }}/plutonic.x86_64"
       
       - name: Download Linux ARM64 build from release
         run: |
           mkdir -p linux-arm64-build
-          wget -O linux-arm64-build/<placeholdername>.arm64 "https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.arm64"
+          wget -O linux-arm64-build/plutonic.arm64 "https://github.com/mlm-games/plutonic/releases/download/${{ inputs.version_name }}/plutonic.arm64"
       
       - name: Calculate SHA256 checksums
         id: checksums
         run: |
-          X64_HASH=$(sha256sum linux-build/<placeholdername>.x86_64 | cut -d ' ' -f 1)
-          ARM64_HASH=$(sha256sum linux-arm64-build/<placeholdername>.arm64 | cut -d ' ' -f 1)
+          X64_HASH=$(sha256sum linux-build/plutonic.x86_64 | cut -d ' ' -f 1)
+          ARM64_HASH=$(sha256sum linux-arm64-build/plutonic.arm64 | cut -d ' ' -f 1)
           echo "x64_hash=$X64_HASH" >> $GITHUB_OUTPUT
           echo "arm64_hash=$ARM64_HASH" >> $GITHUB_OUTPUT
       
@@ -36,22 +36,22 @@ jobs:
           mkdir -p aur-package
           cat > aur-package/PKGBUILD << 'EOF'
           # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
-          pkgname=<placeholdername>-bin
+          pkgname=plutonic-bin
           pkgver=${{ inputs.version_name }}
           pkgrel=1
-          pkgdesc="<PlaceholderShortDesc>"
+          pkgdesc="Suikalike game where you shoot planets in space"
           arch=('x86_64' 'aarch64')
-          url="https://github.com/mlm-games/<placeholdername>"
+          url="https://github.com/mlm-games/plutonic"
           license=('GPL3')
           depends=('glibc' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'alsa-lib')
           optdepends=('pipewire-pulse: for PipeWire audio support'
                       'pulseaudio: for PulseAudio audio support')
-          provides=('<placeholdername>')
-          conflicts=('<placeholdername>')
+          provides=('plutonic')
+          conflicts=('plutonic')
           options=('!strip')
-          source=("https://raw.githubusercontent.com/mlm-games/<placeholdername>/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
-          source_x86_64=("<placeholdername>-${{ inputs.version_name }}-x64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64")
-          source_aarch64=("<placeholdername>-${{ inputs.version_name }}-arm64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.arm64")
+          source=("https://raw.githubusercontent.com/mlm-games/plutonic/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
+          source_x86_64=("plutonic-${{ inputs.version_name }}-x64::https://github.com/mlm-games/plutonic/releases/download/${{ inputs.version_name }}/plutonic.x86_64")
+          source_aarch64=("plutonic-${{ inputs.version_name }}-arm64::https://github.com/mlm-games/plutonic/releases/download/${{ inputs.version_name }}/plutonic.arm64")
           sha256sums=('SKIP')
           sha256sums_x86_64=('${{ steps.checksums.outputs.x64_hash }}')
           sha256sums_aarch64=('${{ steps.checksums.outputs.arm64_hash }}')
@@ -63,23 +63,23 @@ jobs:
               install -d "${pkgdir}/opt/${pkgname}/"
           
               if [[ $CARCH == "x86_64" ]]; then
-                  install -Dm755 "$srcdir/<placeholdername>-${{ inputs.version_name }}-x64" "${pkgdir}/opt/${pkgname}/<placeholdername>"
+                  install -Dm755 "$srcdir/plutonic-${{ inputs.version_name }}-x64" "${pkgdir}/opt/${pkgname}/plutonic"
               elif [[ $CARCH == "aarch64" ]]; then
-                  install -Dm755 "$srcdir/<placeholdername>-${{ inputs.version_name }}-arm64" "${pkgdir}/opt/${pkgname}/<placeholdername>"
+                  install -Dm755 "$srcdir/plutonic-${{ inputs.version_name }}-arm64" "${pkgdir}/opt/${pkgname}/plutonic"
               fi
           
-              ln -s "/opt/${pkgname}/<placeholdername>" "${pkgdir}/usr/bin/<placeholdername>"
+              ln -s "/opt/${pkgname}/plutonic" "${pkgdir}/usr/bin/plutonic"
               
-              install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/<placeholdername>.png"
+              install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/plutonic.png"
           
-              cat > "${pkgdir}/usr/share/applications/<placeholdername>.desktop" << DESKTOP_EOF
+              cat > "${pkgdir}/usr/share/applications/plutonic.desktop" << DESKTOP_EOF
           [Desktop Entry]
-          Name=<Placeholdername> #TODO: Edit when using
-          Exec=<placeholdername>
+          Name=Plutonic
+          Exec=plutonic
           Terminal=false
           Type=Application
-          Icon=<placeholdername>
-          Comment=<PlaceholderShortDesc>
+          Icon=plutonic
+          Comment=Suikalike game where you shoot planets in space
           Categories=Games;
           StartupNotify=true
           DESKTOP_EOF
@@ -89,7 +89,7 @@ jobs:
       - name: Publish to AUR
         uses: mlm-games/aur-deploy-action@master
         with:
-          pkgname: <placeholdername>-bin
+          pkgname: plutonic-bin
           pkgbuild: aur-package/PKGBUILD
           auto_pkgrel: 'true'
           commit_username: MLM-stuff

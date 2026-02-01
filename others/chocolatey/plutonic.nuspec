@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id>plutonic</id>
+    <version>1.0.1</version>
+    <title>Plutonic</title>
+    <authors>mlmstudios</authors>
+    <projectUrl>https://github.com/mlm-games/plutonic</projectUrl>
+    <licenseUrl>https://github.com/mlm-games/plutonic/blob/main/LICENSE</licenseUrl>
+    <iconUrl>https://cdn.statically.io/gh/mlm-games/plutonic/1.0.1/fastlane/metadata/android/en-US/images/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Suikalike game where you shoot planets in space</description>
+    <summary>Suikalike game where you shoot planets in space</summary>
+    <tags><PlaceHolderChocoTags></tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

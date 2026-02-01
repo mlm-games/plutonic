@@ -128,7 +128,7 @@ jobs:
         uses: mlm-games/godot-build-action@main
         with:
           EXPORT_PRESET_NAME: ${{ matrix.platform }}
-          ITCH_USER_SLASH_GAME: "ragebreaker/<placeholdername>" #TODO: Edit when copying
+          ITCH_USER_SLASH_GAME: "ragebreaker/plutonic" #TODO: Edit when copying
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
           KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
@@ -234,7 +234,7 @@ jobs:
   #     - name: Update Chocolatey nuspec version
   #       shell: pwsh
   #       run: |
-  #         $nuspecPath = ".\chocolatey\<placeholdername>.nuspec"
+  #         $nuspecPath = ".\chocolatey\plutonic.nuspec"
   #         $content = Get-Content $nuspecPath
   #         $content = $content -replace "<version>.*</version>", "<version>${{ inputs.version_name }}</version>"
   #         $content | Set-Content $nuspecPath
@@ -244,7 +244,7 @@ jobs:
   #       run: |
   #         # Get the SHA256 hash from the checksums file
   #         $checksumFile = Get-Content ".\choco-package\SHA256SUMS.txt"
-  #         $exeFileName = "<placeholdername>.exe"
+  #         $exeFileName = "plutonic.exe"
   #         $hashLine = $checksumFile | Where-Object { $_ -match "$exeFileName$" }
   #         if ($hashLine) {
   #           $hash = ($hashLine -split '\s+')[0]
@@ -259,7 +259,7 @@ jobs:
   #         # Update the chocolateyinstall.ps1 file
   #         $installPath = ".\chocolatey\tools\chocolateyinstall.ps1"
   #         $content = Get-Content $installPath
-  #         $content = $content -replace "url\s*=\s*'.*'", "url = 'https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.exe'"
+  #         $content = $content -replace "url\s*=\s*'.*'", "url = 'https://github.com/mlm-games/plutonic/releases/download/${{ inputs.version_name }}/plutonic.exe'"
   #         $content = $content -replace "checksum\s*=\s*'.*'", "checksum = '$hash'"
   #         $content | Set-Content $installPath
           
@@ -270,8 +270,8 @@ jobs:
   #       env:
   #         CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
   #       run: |
-  #         choco pack .\chocolatey\<placeholdername>.nuspec
-  #         choco push <placeholdername>.${{ inputs.version_name }}.nupkg --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY
+  #         choco pack .\chocolatey\plutonic.nuspec
+  #         choco push plutonic.${{ inputs.version_name }}.nupkg --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY
 
   # publish-winget:
   #   needs: [prepare-and-build]

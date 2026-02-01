@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="<PlaceHolderName>"
+config/name="Plutonic"
 run/main_scene="uid://dt8hcfffamgd0"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0.0924416, 0.147392, 0.187741, 1)

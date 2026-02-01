@@ -33,13 +33,13 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p others/snap/builds others/snap/snap/gui
-          cp others/flathub/io.github.mlm_games.<placeholdername>.desktop others/snap/snap/gui/<placeholdername>.desktop
+          cp others/flathub/io.github.mlm_games.plutonic.desktop others/snap/snap/gui/plutonic.desktop
           cp fastlane/metadata/android/en-US/images/icon.png others/snap/snap/gui/icon.png
-          sed -i -e 's|^Exec=.*|Exec=<placeholdername>|' \
+          sed -i -e 's|^Exec=.*|Exec=plutonic|' \
                  -e 's|^Icon=.*|Icon=${SNAP}/meta/gui/icon.png|' \
-                 others/snap/snap/gui/<placeholdername>.desktop
-          curl -fL "https://github.com/${{ github.repository }}/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64" -o others/snap/builds/<placeholdername>
-          chmod +x others/snap/builds/<placeholdername>
+                 others/snap/snap/gui/plutonic.desktop
+          curl -fL "https://github.com/${{ github.repository }}/releases/download/${{ inputs.version_name }}/plutonic.x86_64" -o others/snap/builds/plutonic
+          chmod +x others/snap/builds/plutonic
 
       - name: Update version in snapcraft.yml
         run: |
