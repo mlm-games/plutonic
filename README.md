@@ -1,6 +1,6 @@
 # Plutonic
 
-A suika-like / spuntika-like game that supports pluto's inclusion into our solar system 
+A suika-like / spuntika-like game that supports pluto's inclusion into our solar system (made in Godot and is OSS)
 
 <!-- (actually though, have no agenda) -->
 
