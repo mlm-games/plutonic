@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="sun.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.7407349"
+     inkscape:cx="199.91556"
+     inkscape:cy="267.99026"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="false" />
+  <defs
+     id="defs1">
+    <radialGradient
+       id="earthGrad"
+       cx="62.079999"
+       cy="62.079999"
+       r="142.19999"
+       fx="62.079999"
+       fy="62.079999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156)">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#2e6bb5"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#1a4a8a"
+         id="stop3" />
+    </radialGradient>
+    <filter
+       id="glow"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3" />
+      <feMerge
+         id="feMerge4">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4" />
+      </feMerge>
+    </filter>
+    <filter
+       id="surfaceGlow"
+       x="-0.072"
+       y="-0.072"
+       width="1.144"
+       height="1.144">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur6" />
+      <feMerge
+         id="feMerge8">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode7" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode8" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter2"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur1" />
+      <feMerge
+         id="feMerge2">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode1" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode2" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter4"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur2" />
+      <feMerge
+         id="feMerge4-9">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode3-3" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4-6" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter6"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur4" />
+      <feMerge
+         id="feMerge6">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode5" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode6" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter10"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur7" />
+      <feMerge
+         id="feMerge10">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode9" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode10" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter12"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur10" />
+      <feMerge
+         id="feMerge12">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode11" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode12" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       id="sunGrad"
+       cx="80.806801"
+       cy="76.081071"
+       r="151.08782"
+       gradientTransform="matrix(0.9766505,0,0,1.0239077,156.00002,156.00002)"
+       fx="80.806801"
+       fy="76.081071"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#ffffa0"
+         id="stop1-0" />
+      <stop
+         offset="30%"
+         stop-color="#ffec00"
+         id="stop2-6" />
+      <stop
+         offset="70%"
+         stop-color="#ffcc00"
+         id="stop3-2" />
+      <stop
+         offset="100%"
+         stop-color="#ffaa00"
+         id="stop4" />
+    </radialGradient>
+    <filter
+       id="filter14"
+       x="-0.12"
+       y="-0.15000001"
+       width="1.24"
+       height="1.3">
+      <feGaussianBlur
+         stdDeviation="1.5"
+         result="blur"
+         id="feGaussianBlur12" />
+      <feMerge
+         id="feMerge14">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode13" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode14" />
+      </feMerge>
+    </filter>
+    <filter
+       id="sunGlow"
+       x="-0.10666667"
+       y="-0.10666667"
+       width="1.2133333"
+       height="1.2133333">
+      <feGaussianBlur
+         stdDeviation="8"
+         result="blur"
+         id="feGaussianBlur14" />
+      <feMerge
+         id="feMerge17">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode15" />
+        <feMergeNode
+           in="blur"
+           id="feMergeNode16" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode17" />
+      </feMerge>
+    </filter>
+    <filter
+       id="filter20"
+       x="-0.10666667"
+       y="-0.10666667"
+       width="1.2133332"
+       height="1.2133332">
+      <feGaussianBlur
+         stdDeviation="8"
+         result="blur"
+         id="feGaussianBlur17" />
+      <feMerge
+         id="feMerge20">
+        <feMergeNode
+           in="blur"
+           id="feMergeNode18" />
+        <feMergeNode
+           in="blur"
+           id="feMergeNode19" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode20" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       cx="256"
+       cy="256"
+       r="95"
+       fill="#ffcc00"
+       opacity="0.3"
+       filter="url(#sunGlow)"
+       id="circle8" />
+    <circle
+       cx="256"
+       cy="256"
+       r="90"
+       fill="#ffdd40"
+       opacity="0.5"
+       filter="url(#sunGlow)"
+       id="circle9" />
+    <circle
+       cx="256"
+       cy="256"
+       r="85"
+       fill="url(#sunGrad)"
+       filter="url(#surfaceGlow)"
+       id="circle10"
+       style="fill:url(#sunGrad)" />
+    <circle
+       cx="241.00002"
+       cy="241.00002"
+       r="25"
+       fill="#ffffc0"
+       opacity="0.3"
+       filter="url(#surfaceGlow)"
+       id="circle14" />
+    <circle
+       cx="241.00002"
+       cy="241.00002"
+       r="25"
+       fill="#ffffc0"
+       opacity="0.3"
+       filter="url(#surfaceGlow)"
+       id="circle1"
+       transform="matrix(0.68866137,0,0,0.68866137,68.12833,68.12833)" />
+  </g>
+</svg>

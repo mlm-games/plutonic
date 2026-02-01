@@ -1,0 +1,175 @@
+[gd_scene format=3 uid="uid://c7j5jqynag4uw"]
+
+[ext_resource type="Script" uid="uid://b13rnxpo5kt4b" path="res://addons/my-ecosystem-template/transitions/screen_transitions.gd" id="1_23rxh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7n6f"]
+
+[sub_resource type="Animation" id="Animation_8o81u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OnScreenEffectsRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TransitionRect:material:shader_parameter/progress")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_0p84c"]
+resource_name = "circleIn"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y8vgw"]
+resource_name = "circleOut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:material:shader_parameter/progress")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_7cxrl"]
+resource_name = "fadeToBlack"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_i0ik4"]
+resource_name = "fadeToNormal"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransitionRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qqa86"]
+resource_name = "slightFlash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OnScreenEffectsRect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mvkca"]
+_data = {
+&"RESET": SubResource("Animation_8o81u"),
+&"circleIn": SubResource("Animation_0p84c"),
+&"circleOut": SubResource("Animation_y8vgw"),
+&"fadeToBlack": SubResource("Animation_7cxrl"),
+&"fadeToNormal": SubResource("Animation_i0ik4"),
+&"slightFlash": SubResource("Animation_qqa86")
+}
+
+[node name="TransitionScreen" type="CanvasLayer" unique_id=472168930]
+process_mode = 3
+layer = 99
+script = ExtResource("1_23rxh")
+
+[node name="TransitionRect" type="ColorRect" parent="." unique_id=1829193402]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_t7n6f")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="TransitionRect" unique_id=642818650]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_mvkca")
+
+[node name="OnScreenEffectsRect" type="ColorRect" parent="." unique_id=300422046]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="EffectsPlayer" type="AnimationPlayer" parent="OnScreenEffectsRect" unique_id=355950009]
+root_node = NodePath("../..")
+
+[node name="ShaderRect" type="ColorRect" parent="." unique_id=1649991848]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[connection signal="animation_finished" from="TransitionRect/TransitionPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="OnScreenEffectsRect/EffectsPlayer" to="." method="_on_animation_player_animation_finished"]

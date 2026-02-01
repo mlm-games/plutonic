@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dt8hcfffamgd0"]
+
+[ext_resource type="Script" uid="uid://clur5rw70ut0u" path="res://game/scenes/game/game_world.gd" id="1_world"]
+[ext_resource type="PackedScene" uid="uid://bj7tt3s40xao3" path="res://game/scenes/game/bubble.tscn" id="2_bubble"]
+[ext_resource type="PackedScene" uid="uid://buq5m64fen17b" path="res://game/scenes/game/shooter.tscn" id="3_shooter"]
+[ext_resource type="PackedScene" uid="uid://bk1jt1v7l7t4k" path="res://game/scenes/ui/game_hud.tscn" id="4_hud"]
+
+[node name="GameWorld" type="Node2D" unique_id=653343394]
+script = ExtResource("1_world")
+
+[node name="Background" type="ColorRect" parent="." unique_id=520948205]
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0.05, 0.05, 0.15, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Bubble" parent="." unique_id=1521746708 instance=ExtResource("2_bubble")]
+unique_name_in_owner = true
+position = Vector2(540, 712)
+
+[node name="Shooter" parent="." unique_id=662326942 instance=ExtResource("3_shooter")]
+unique_name_in_owner = true
+position = Vector2(540, 1464)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=458458131]
+
+[node name="GameHUD" parent="CanvasLayer" unique_id=1531097864 instance=ExtResource("4_hud")]
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=827534289]

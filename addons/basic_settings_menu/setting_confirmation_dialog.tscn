@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bwcsibejua3bb"]
+
+[ext_resource type="Script" uid="uid://curtlv5hlt5iq" path="res://addons/basic_settings_menu/confirmation_dialog.gd" id="1_uq3ti"]
+
+[node name="ConfirmationDialog" type="ConfirmationDialog" unique_id=353230764]
+oversampling_override = 1.0
+initial_position = 1
+size = Vector2i(335, 106)
+visible = true
+ok_button_text = "Apply"
+dialog_text = "The setting will be reverted in 15 seconds"
+dialog_autowrap = true
+cancel_button_text = "Revert"
+script = ExtResource("1_uq3ti")
+
+[node name="CountdownTimer" type="Timer" parent="." unique_id=1426134992]
+unique_name_in_owner = true

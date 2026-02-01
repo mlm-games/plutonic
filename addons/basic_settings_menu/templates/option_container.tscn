@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://d1kniiwptb48v"]
+
+[ext_resource type="Script" uid="uid://bw0iehhew5tdr" path="res://addons/basic_settings_menu/templates/base_setting_control.gd" id="1_q0m8a"]
+
+[node name="HBoxContainer" type="HBoxContainer" unique_id=1336015099]
+offset_right = 41.0
+offset_bottom = 23.0
+script = ExtResource("1_q0m8a")
+
+[node name="Label" type="Label" parent="." unique_id=1159535369]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SpacerControl" type="Control" parent="." unique_id=1258472103]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.75
+
+[node name="InteractablePartOfSetting" type="OptionButton" parent="." unique_id=693709568]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1

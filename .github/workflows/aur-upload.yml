@@ -1,0 +1,98 @@
+name: Publish to AUR
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: 'Version name (e.g., 0.7.2)'
+        required: true
+
+jobs:
+  update-aur:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download Linux x64 build from release
+        run: |
+          mkdir -p linux-build
+          wget -O linux-build/<placeholdername>.x86_64 "https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64"
+      
+      - name: Download Linux ARM64 build from release
+        run: |
+          mkdir -p linux-arm64-build
+          wget -O linux-arm64-build/<placeholdername>.arm64 "https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.arm64"
+      
+      - name: Calculate SHA256 checksums
+        id: checksums
+        run: |
+          X64_HASH=$(sha256sum linux-build/<placeholdername>.x86_64 | cut -d ' ' -f 1)
+          ARM64_HASH=$(sha256sum linux-arm64-build/<placeholdername>.arm64 | cut -d ' ' -f 1)
+          echo "x64_hash=$X64_HASH" >> $GITHUB_OUTPUT
+          echo "arm64_hash=$ARM64_HASH" >> $GITHUB_OUTPUT
+      
+      - name: Create PKGBUILD
+        run: |
+          mkdir -p aur-package
+          cat > aur-package/PKGBUILD << 'EOF'
+          # Maintainer: MLM-stuff <gfxoxinzh@mozmail.com>
+          pkgname=<placeholdername>-bin
+          pkgver=${{ inputs.version_name }}
+          pkgrel=1
+          pkgdesc="<PlaceholderShortDesc>"
+          arch=('x86_64' 'aarch64')
+          url="https://github.com/mlm-games/<placeholdername>"
+          license=('GPL3')
+          depends=('glibc' 'libx11' 'libxcursor' 'libxinerama' 'libxrandr' 'libxi' 'alsa-lib')
+          optdepends=('pipewire-pulse: for PipeWire audio support'
+                      'pulseaudio: for PulseAudio audio support')
+          provides=('<placeholdername>')
+          conflicts=('<placeholdername>')
+          options=('!strip')
+          source=("https://raw.githubusercontent.com/mlm-games/<placeholdername>/refs/heads/main/fastlane/metadata/android/en-US/images/icon.png")
+          source_x86_64=("<placeholdername>-${{ inputs.version_name }}-x64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.x86_64")
+          source_aarch64=("<placeholdername>-${{ inputs.version_name }}-arm64::https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.arm64")
+          sha256sums=('SKIP')
+          sha256sums_x86_64=('${{ steps.checksums.outputs.x64_hash }}')
+          sha256sums_aarch64=('${{ steps.checksums.outputs.arm64_hash }}')
+          
+          package() {
+              install -d "${pkgdir}/usr/bin/"
+              install -d "${pkgdir}/usr/share/applications/"
+              install -d "${pkgdir}/usr/share/pixmaps/"
+              install -d "${pkgdir}/opt/${pkgname}/"
+          
+              if [[ $CARCH == "x86_64" ]]; then
+                  install -Dm755 "$srcdir/<placeholdername>-${{ inputs.version_name }}-x64" "${pkgdir}/opt/${pkgname}/<placeholdername>"
+              elif [[ $CARCH == "aarch64" ]]; then
+                  install -Dm755 "$srcdir/<placeholdername>-${{ inputs.version_name }}-arm64" "${pkgdir}/opt/${pkgname}/<placeholdername>"
+              fi
+          
+              ln -s "/opt/${pkgname}/<placeholdername>" "${pkgdir}/usr/bin/<placeholdername>"
+              
+              install -Dm644 "$srcdir/icon.png" "${pkgdir}/usr/share/pixmaps/<placeholdername>.png"
+          
+              cat > "${pkgdir}/usr/share/applications/<placeholdername>.desktop" << DESKTOP_EOF
+          [Desktop Entry]
+          Name=<Placeholdername> #TODO: Edit when using
+          Exec=<placeholdername>
+          Terminal=false
+          Type=Application
+          Icon=<placeholdername>
+          Comment=<PlaceholderShortDesc>
+          Categories=Games;
+          StartupNotify=true
+          DESKTOP_EOF
+          }
+          EOF
+      
+      - name: Publish to AUR
+        uses: mlm-games/aur-deploy-action@master
+        with:
+          pkgname: <placeholdername>-bin
+          pkgbuild: aur-package/PKGBUILD
+          auto_pkgrel: 'true'
+          commit_username: MLM-stuff
+          commit_email: gfxoxinzh@mozmail.com
+          ssh_private_key: ${{ secrets.AUR_SSH_PRIVATE_KEY }}
+          commit_message: "Update to version ${{ inputs.version_name }}"

@@ -1,0 +1,338 @@
+name: Release builds
+
+on:
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: 'Version name (e.g., 0.5.2)'
+        required: true
+      upload_to_itch:
+        description: 'Upload exported files to itch.io?'
+        required: false
+        default: true
+        type: boolean
+      auto_generate_changelog:
+        description: 'Auto-generate changelog from commits'
+        required: false
+        default: false
+        type: boolean
+      mark_prerelease:
+        description: 'Mark as prerelease'
+        required: true
+        default: false
+        type: boolean
+      # publish_to_choco:
+      #   description: 'Publish to Chocolatey'
+      #   required: false
+      #   default: 'false'
+      #   type: boolean
+      # publish_to_winget:
+      #   description: 'Publish to WinGet'
+      #   required: false
+      #   default: 'false'
+      #   type: boolean
+      publish_to_aur:
+        description: 'Publish to AUR'
+        required: false
+        default: true
+        type: boolean
+      publish_to_snap:
+        description: 'Publish to Snapcraft'
+        required: false
+        default: true
+        type: boolean
+
+jobs:
+  commit-vercode-changes:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      new_version_code: ${{ steps.prev_version.outputs.new_code }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get Previous Version Code
+        id: prev_version
+        run: |
+          PREV_CODE=$(grep -o 'version/code=[0-9]*' export_presets.cfg | head -1 | cut -d= -f2)
+          NEW_CODE=$((PREV_CODE + 10))
+          echo "prev_code=${PREV_CODE}" >> $GITHUB_OUTPUT
+          echo "new_code=${NEW_CODE}" >> $GITHUB_OUTPUT
+
+      - name: Generate Release Notes
+        uses: mlm-games/release-notes-generator@main
+        with:
+          version: ${{ inputs.version_name }}
+          changelog-path: 'CHANGELOG.md'
+          version-file-path: './fastlane/metadata/android/en-US/changelogs/${{ steps.prev_version.outputs.new_code }}.txt'
+          version-code: '${{ steps.prev_version.outputs.new_code }}'
+          # metainfo-path: './others/flathub/io.github.mlm_games.<name_with_underscore>.metainfo.xml'  # TODO: Change here when copying
+          exclude-patterns: 'Update version to,Merge ,Auto-generate changelog'
+          auto-commit: 'true'
+          commit-message: 'Update release notes for v{{version}}'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          
+      - name: Commit Previous Version Code
+        run: |
+          echo "Previous version code: ${{ steps.prev_version.outputs.prev_code }}"
+          echo "New version code: ${{ steps.prev_version.outputs.new_code }}"
+          
+          VERSION_CODE=${{ steps.prev_version.outputs.new_code }}
+          
+          sed -i "/version\/name=\".*\"/s//version\/name=\"${{ inputs.version_name }}\"/" export_presets.cfg
+          
+          # Update version codes
+          sed -i "0,/version\/code=[0-9]*/s//version\/code=$VERSION_CODE/" export_presets.cfg
+          sed -i "0,/version\/code=[0-9]*/! {0,/version\/code=[0-9]*/s//version\/code=$((VERSION_CODE+1))/}" export_presets.cfg
+          sed -i "$(grep -n 'version/code=' export_presets.cfg | tail -n1 | cut -d: -f1),\$s/version\/code=[0-9]*/version\/code=$((VERSION_CODE+2))/" export_presets.cfg
+
+          # Update project.godot version
+          sed -i "s|config/version=\".*\"|config/version=\"${{ inputs.version_name }}\"|" project.godot
+
+      - name: Commit Changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          git pull
+          git add export_presets.cfg
+          git add project.godot
+          git add ./fastlane/metadata/android/en-US/changelogs/${{ steps.prev_version.outputs.new_code }}.txt
+          git commit -m "Update version to ${{ inputs.version_name }} (${{ steps.prev_version.outputs.new_code }})"
+          git push
+      
+
+  prepare-and-build:
+    needs: commit-vercode-changes
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    strategy:
+      matrix:
+        platform: ["Windows Desktop", "Linux", "Linux arm64", "Web", "Android arm32", "Android arm64", "Android x86 and x86 64", "macOS"]
+      fail-fast: false
+      max-parallel: 1
+
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: git pull
+        shell: bash
+        run: |
+          git pull
+          
+      - name: Build
+        uses: mlm-games/godot-build-action@main
+        with:
+          EXPORT_PRESET_NAME: ${{ matrix.platform }}
+          ITCH_USER_SLASH_GAME: "ragebreaker/<placeholdername>" #TODO: Edit when copying
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          RELEASE_KEYSTORE: ${{ secrets.RELEASE_KEYSTORE }}
+          KEYSTORE_PASSPHRASE: ${{ secrets.KEYSTORE_PASSPHRASE }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          BUTLER_UPLOAD: ${{ inputs.upload_to_itch }}
+          GODOT_PREVIEW_BUILDS: true
+        continue-on-error: true
+
+      - name: Set artifact name and pull latest
+        id: artifact-name
+        shell: bash
+        run: |
+          PLATFORM="${{ matrix.platform }}"
+          SAFE_NAME="${PLATFORM//[^a-zA-Z0-9_]/_}"
+          echo "name=${SAFE_NAME}" >> $GITHUB_OUTPUT
+          git pull
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.artifact-name.outputs.name }}-build
+          path: ${{ github.workspace }}/builds/
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: ${{ github.workspace }}/builds/*
+          name: ${{ inputs.version_name }}
+          tag_name: ${{ inputs.version_name }}
+          body_path: ./fastlane/metadata/android/en-US/changelogs/${{ needs.commit-vercode-changes.outputs.new_version_code }}.txt
+          prerelease: ${{ inputs.mark_prerelease }}
+          generate_release_notes: true
+        continue-on-error: true
+
+      - name: Generate SHA256 checksums
+        shell: bash
+        run: |
+          cd ${{ github.workspace }}/builds/
+          
+          # Create checksums file
+          echo "# SHA256 Checksums for ${{ matrix.platform }}" > SHA256SUMS.txt
+          echo "Generated on $(date)" >> SHA256SUMS.txt
+          echo "" >> SHA256SUMS.txt
+          
+          # Calculate checksums for each file and append to checksums file
+          for file in *; do
+            if [ -f "$file" ] && [ "$file" != "SHA256SUMS.txt" ]; then
+              HASH=$(sha256sum "$file" | cut -d ' ' -f 1)
+              echo "$HASH  $file" >> SHA256SUMS.txt
+              echo "File: $file"
+              echo "SHA256: $HASH"
+            fi
+          done
+        continue-on-error: true
+  
+  
+  # publish-chocolatey:
+  #   needs: [prepare-and-build]
+  #   if: ${{ inputs.publish_to_choco == true }}
+  #   runs-on: windows-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+      
+  #     - name: Download Windows build artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: Windows_Desktop-build
+  #         path: ./choco-package
+      
+  #     - name: List downloaded files
+  #       shell: pwsh
+  #       run: |
+  #         Write-Output "Files in choco-package:"
+  #         Get-ChildItem -Path ".\choco-package" -Recurse
+      
+  #     - name: Generate checksums if missing
+  #       shell: pwsh
+  #       run: |
+  #         if (-not (Test-Path ".\choco-package\SHA256SUMS.txt")) {
+  #           Write-Output "SHA256SUMS.txt not found, generating checksums..."
+  #           $files = Get-ChildItem -Path ".\choco-package" -File
+  #           $checksumContent = @()
+  #           $checksumContent += "# SHA256 Checksums for Windows Desktop"
+  #           $checksumContent += "Generated on $(Get-Date)"
+  #           $checksumContent += ""
+            
+  #           foreach ($file in $files) {
+  #             $hash = Get-FileHash -Path $file.FullName -Algorithm SHA256
+  #             $checksumContent += "$($hash.Hash.ToLower())  $($file.Name)"
+  #             Write-Output "File: $($file.Name)"
+  #             Write-Output "SHA256: $($hash.Hash.ToLower())"
+  #           }
+            
+  #           $checksumContent | Out-File -FilePath ".\choco-package\SHA256SUMS.txt" -Encoding UTF8
+  #         }
+      
+  #     - name: Setup Chocolatey
+  #       uses: crazy-max/ghaction-chocolatey@v3
+  #       with:
+  #         args: -v
+      
+  #     - name: Update Chocolatey nuspec version
+  #       shell: pwsh
+  #       run: |
+  #         $nuspecPath = ".\chocolatey\<placeholdername>.nuspec"
+  #         $content = Get-Content $nuspecPath
+  #         $content = $content -replace "<version>.*</version>", "<version>${{ inputs.version_name }}</version>"
+  #         $content | Set-Content $nuspecPath
+      
+  #     - name: Update Chocolatey install script
+  #       shell: pwsh
+  #       run: |
+  #         # Get the SHA256 hash from the checksums file
+  #         $checksumFile = Get-Content ".\choco-package\SHA256SUMS.txt"
+  #         $exeFileName = "<placeholdername>.exe"
+  #         $hashLine = $checksumFile | Where-Object { $_ -match "$exeFileName$" }
+  #         if ($hashLine) {
+  #           $hash = ($hashLine -split '\s+')[0]
+  #           Write-Output "Found hash: $hash for $exeFileName"
+  #         } else {
+  #           Write-Error "Could not find hash for $exeFileName in SHA256SUMS.txt"
+  #           Write-Output "Available files in checksums:"
+  #           $checksumFile | ForEach-Object { Write-Output $_ }
+  #           exit 1
+  #         }
+          
+  #         # Update the chocolateyinstall.ps1 file
+  #         $installPath = ".\chocolatey\tools\chocolateyinstall.ps1"
+  #         $content = Get-Content $installPath
+  #         $content = $content -replace "url\s*=\s*'.*'", "url = 'https://github.com/mlm-games/<placeholdername>/releases/download/${{ inputs.version_name }}/<placeholdername>.exe'"
+  #         $content = $content -replace "checksum\s*=\s*'.*'", "checksum = '$hash'"
+  #         $content | Set-Content $installPath
+          
+  #         Write-Output "Updated chocolateyinstall.ps1 with new URL and checksum"
+      
+  #     - name: Pack and push Chocolatey package
+  #       shell: pwsh
+  #       env:
+  #         CHOCO_API_KEY: ${{ secrets.CHOCO_API_KEY }}
+  #       run: |
+  #         choco pack .\chocolatey\<placeholdername>.nuspec
+  #         choco push <placeholdername>.${{ inputs.version_name }}.nupkg --source https://push.chocolatey.org/ --api-key $env:CHOCO_API_KEY
+
+  # publish-winget:
+  #   needs: [prepare-and-build]
+  #   if: ${{ inputs.publish_to_winget == true }}
+  #   runs-on: windows-latest
+  #   steps:
+  #     - name: Download Windows build artifact
+  #       uses: actions/download-artifact@v4
+  #       with:
+  #         name: Windows_Desktop-build
+  #         path: ./winget-package
+      
+  #     - name: Submit to WinGet
+  #       uses: vedantmgoyal2009/winget-releaser@v2
+  #       with:
+  #         identifier: MLMGames.FreeTheBugs #TODO: edit here
+  #         version: ${{ inputs.version_name }}
+  #         release-tag: ${{ inputs.version_name }}
+  #         token: ${{ secrets.WINGET_TOKEN }}
+
+  update-aur:
+    needs: [prepare-and-build]
+    runs-on: ubuntu-latest
+    if: ${{ inputs.publish_to_aur == true }}
+    steps:
+      - name: Trigger AUR publish workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'aur-upload.yml',
+              ref: 'main',
+              inputs: {
+                version_name: '${{ inputs.version_name }}',
+                increment_pkgrel: 'false'
+              }
+            });
+            
+            console.log('Triggered AUR publish workflow for version ${{ inputs.version_name }}');
+
+  update-snap:
+    needs: [prepare-and-build]
+    runs-on: ubuntu-latest
+    if: ${{ inputs.publish_to_snap == true }}
+    steps:
+      - name: Trigger Snapcraft publish workflow
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'snap-upload.yml',
+              ref: 'main',
+              inputs: {
+                version_name: '${{ inputs.version_name }}',
+              }
+            });
+            
+            console.log('Triggered Snapcraft publish workflow for version ${{ inputs.version_name }}');

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://d1e2f3g4h5i6j"]
+
+[ext_resource type="Script" uid="uid://cfbffohcsf8vf" path="res://addons/my-ecosystem-template/pause-menu/pause_menu_layer.gd" id="1_a0dfe"]
+[ext_resource type="Script" uid="uid://i3hey8xc0u3v" path="res://addons/my-ecosystem-template/pause-menu/pause_menu.gd" id="2_65i0k"]
+[ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="3_8ec28"]
+[ext_resource type="Script" uid="uid://cnfh1rl7a17mv" path="res://addons/my-ecosystem-template/transitions/popup_animator.gd" id="4_wnuyk"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=284867816]
+layer = 50
+script = ExtResource("1_a0dfe")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=848386402]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_65i0k")
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu" unique_id=185978512]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -109.0
+offset_top = -109.0
+offset_right = 137.0
+offset_bottom = 111.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5)
+
+[node name="CenterContainer" type="VBoxContainer" parent="PauseMenu" unique_id=1654940476]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -77.0
+offset_top = -66.5
+offset_right = 77.0
+offset_bottom = 66.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 20
+
+[node name="ResumeButton" type="Button" parent="PauseMenu/CenterContainer" unique_id=321755360]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Resume"
+script = ExtResource("3_8ec28")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="SettingsButton" type="Button" parent="PauseMenu/CenterContainer" unique_id=1835191280]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+script = ExtResource("3_8ec28")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="QuitButton" type="Button" parent="PauseMenu/CenterContainer" unique_id=2031064669]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Quit to Main Menu"
+script = ExtResource("3_8ec28")
+metadata/_custom_type_script = "uid://cmo5qw3rubish"
+
+[node name="PopupAnimator" type="Node" parent="PauseMenu" unique_id=2091074712 node_paths=PackedStringArray("target_node")]
+script = ExtResource("4_wnuyk")
+target_node = NodePath("..")

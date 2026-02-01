@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://bgjpgqx8f3igh"]
+
+[ext_resource type="Script" uid="uid://bw0iehhew5tdr" path="res://addons/basic_settings_menu/templates/base_setting_control.gd" id="1_8nk1n"]
+
+[node name="FPSContainer" type="HBoxContainer" unique_id=681110967]
+offset_right = 95.0
+offset_bottom = 31.0
+size_flags_horizontal = 3
+script = ExtResource("1_8nk1n")
+
+[node name="Label" type="Label" parent="." unique_id=73427537]
+layout_mode = 2
+
+[node name="SpacerControl" type="Control" parent="." unique_id=799017622]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 5.5
+
+[node name="InteractablePartOfSetting" type="SpinBox" parent="." unique_id=49647762]
+unique_name_in_owner = true
+layout_mode = 2
+max_value = 999.0
+rounded = true
+alignment = 1

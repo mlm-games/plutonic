@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="mars.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.7407349"
+     inkscape:cx="352.15012"
+     inkscape:cy="267.99026"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="false" />
+  <defs
+     id="defs1">
+    <radialGradient
+       id="earthGrad"
+       cx="62.079999"
+       cy="62.079999"
+       r="142.19999"
+       fx="62.079999"
+       fy="62.079999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156)">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#2e6bb5"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#1a4a8a"
+         id="stop3" />
+    </radialGradient>
+    <filter
+       id="glow"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3" />
+      <feMerge
+         id="feMerge4">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       id="marsGrad"
+       cx="71.559996"
+       cy="71.559996"
+       r="142.19999"
+       fx="71.559996"
+       fy="71.559996"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156.00004)">
+      <stop
+         offset="0%"
+         stop-color="#ff8b6b"
+         id="stop1-7" />
+      <stop
+         offset="50%"
+         stop-color="#e85a3a"
+         id="stop2-5" />
+      <stop
+         offset="100%"
+         stop-color="#c43a1a"
+         id="stop3-3" />
+    </radialGradient>
+    <filter
+       id="glow-5"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3-6" />
+      <feMerge
+         id="feMerge4-2">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3-9" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4-1" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       cx="256"
+       cy="256"
+       r="90"
+       fill="url(#marsGrad)"
+       filter="url(#glow)"
+       id="circle4"
+       style="fill:url(#marsGrad);filter:url(#glow-5)" />
+    <path
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="m 268.83068,192.87307 c 4.02129,-0.57447 60.89382,-6.31917 37.34055,19.53199 -23.55327,25.85115 -47.68101,46.53207 -43.65972,13.21281 4.02129,-33.31927 -7.58646,-30.75828 6.31917,-32.7448 z"
+       id="path1"
+       sodipodi:nodetypes="ssss" />
+    <path
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="m 236.45073,281.4903 c -12.65384,-6.09861 -60.89382,-6.31917 -37.34055,19.53199 23.55327,25.85115 47.68101,46.53207 43.65972,13.21281 -4.02129,-33.31927 3.69479,-27.9185 -6.31917,-32.7448 z"
+       id="path2"
+       sodipodi:nodetypes="assa" />
+    <path
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="m 213.12837,232.66036 c -2.47379,-9.33818 8.94497,-24.4644 18.38305,-22.40434 11.02693,2.40686 27.00009,15.51069 8.61705,32.7448 -18.38305,17.2341 -24.53215,-1.02432 -27.0001,-10.34046 z"
+       id="path3"
+       sodipodi:nodetypes="ssss" />
+    <path
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="m 288.95842,312.51169 c 26.42562,-9.76599 24.6221,-17.13369 20.10645,-27.57456 -4.90276,-11.33594 -30.20111,-15.0572 -36.76608,-4.59576 -4.122,6.56851 9.32702,12.51975 12.63834,19.53198 1.88775,3.99759 -6.6489,16.58167 4.02129,12.63834 z"
+       id="path4"
+       sodipodi:nodetypes="saaas" />
+  </g>
+</svg>

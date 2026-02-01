@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="saturn.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.7407349"
+     inkscape:cx="211.97943"
+     inkscape:cy="278.90519"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1">
+    <radialGradient
+       id="earthGrad"
+       cx="62.079999"
+       cy="62.079999"
+       r="142.19999"
+       fx="62.079999"
+       fy="62.079999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156)">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#2e6bb5"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#1a4a8a"
+         id="stop3" />
+    </radialGradient>
+    <filter
+       id="glow"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3" />
+      <feMerge
+         id="feMerge4">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       id="saturnGrad"
+       cx="116.06"
+       cy="76.059998"
+       r="119.7"
+       fx="116.06"
+       fy="76.059998"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(116,156.00001)">
+      <stop
+         offset="0%"
+         stop-color="#f8e8a8"
+         id="stop1-7" />
+      <stop
+         offset="50%"
+         stop-color="#e8c84a"
+         id="stop2-5" />
+      <stop
+         offset="100%"
+         stop-color="#c8a820"
+         id="stop3-3" />
+    </radialGradient>
+    <filter
+       id="glow-5"
+       x="-0.032"
+       y="-0.032"
+       width="1.064"
+       height="1.064">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur6" />
+      <feMerge
+         id="feMerge7">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode6" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode7" />
+      </feMerge>
+    </filter>
+    <linearGradient
+       id="ringGrad"
+       x1="13.113539"
+       y1="140.77054"
+       x2="13.113539"
+       y2="255.76619"
+       gradientTransform="matrix(1.9826837,0,0,0.5043669,-306.80325,-421.32333)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#d4b86a"
+         stop-opacity="0.8"
+         id="stop4" />
+      <stop
+         offset="50%"
+         stop-color="#c4a030"
+         stop-opacity="0.6"
+         id="stop5" />
+      <stop
+         offset="100%"
+         stop-color="#b09020"
+         stop-opacity="0.8"
+         id="stop6" />
+    </linearGradient>
+    <linearGradient
+       id="ringGrad-0"
+       x1="13.113539"
+       y1="140.77054"
+       x2="13.113539"
+       y2="255.76619"
+       gradientTransform="matrix(2.062613,0,0,0.5246998,-312.44716,-425.3547)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#d4b86a"
+         stop-opacity="0.8"
+         id="stop4-9" />
+      <stop
+         offset="50%"
+         stop-color="#c4a030"
+         stop-opacity="0.6"
+         id="stop5-3" />
+      <stop
+         offset="100%"
+         stop-color="#b09020"
+         stop-opacity="0.8"
+         id="stop6-6" />
+    </linearGradient>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g2">
+      <circle
+         cx="256"
+         cy="256"
+         r="75"
+         fill="url(#saturnGrad)"
+         filter="url(#glow)"
+         id="circle7"
+         style="fill:url(#saturnGrad);filter:url(#glow-5)" />
+      <ellipse
+         cx="-166.80324"
+         cy="-321.32333"
+         rx="110"
+         ry="25"
+         fill="none"
+         stroke="url(#ringGrad)"
+         stroke-width="8"
+         opacity="0.9"
+         id="ellipse12"
+         style="stroke:url(#ringGrad)"
+         transform="rotate(162.43443)" />
+      <ellipse
+         cx="-166.80324"
+         cy="-321.32333"
+         rx="114.4345"
+         ry="26.007843"
+         fill="none"
+         stroke="url(#ringGrad)"
+         stroke-width="8.32251"
+         opacity="0.9"
+         id="ellipse12-6"
+         style="stroke:url(#ringGrad-0)"
+         transform="rotate(162.43443)" />
+    </g>
+  </g>
+</svg>

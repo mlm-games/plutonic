@@ -1,0 +1,88 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="<PlaceHolderName>"
+run/main_scene="uid://dt8hcfffamgd0"
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.0924416, 0.147392, 0.187741, 1)
+config/icon="res://icon.svg"
+
+[autoload]
+
+#...existingautoloads...WindowManager="*res://game/scripts/autoloads/window_manager.gd"
+STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
+SettingsManager="*uid://wfehnu87uuxk"
+SettingsApplier="*uid://b5jtf7dbnupqj"
+UiAudioM="*res://addons/my-ecosystem-template/managers/audio/ui_audio_manager.gd"
+AudioM="*res://addons/my-ecosystem-template/managers/audio/autoload_audio_manager.gd"
+PauseMenu="*res://addons/my-ecosystem-template/pause-menu/pause_menu_layer.tscn"
+LayerNames="*uid://dpotfesii40yn"
+A="*res://game/scenes/autoloads/autoload.tscn"
+DebugShortcutsManager="*res://addons/my-ecosystem-template/managers/debug_shortcuts_manager.gd"
+GameManager="*res://game/scripts/autoloads/game_manager.gd"
+WindowManager="*res://game/scripts/autoloads/window_manager.gd"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/window_width_override=540
+window/size/window_height_override=960
+window/stretch/mode="canvas_items"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/basic_settings_menu/plugin.cfg", "res://addons/layer_names/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://ducfept6pmkkm"
+theme/custom_font="uid://bmrr48g0p6wor"
+
+[input]
+
+touch_primary={
+"deadzone": 0.5,
+"events": []
+}
+toggle_fullscreen={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194342,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+undo={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":122,"location":0,"echo":false,"script":null)
+]
+}
+redo={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":89,"key_label":0,"unicode":121,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":true,"ctrl_pressed":true,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":90,"key_label":0,"unicode":90,"location":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://locale/translations.ar.translation", "res://locale/translations.bg.translation", "res://locale/translations.br.translation", "res://locale/translations.bs.translation", "res://locale/translations.cs.translation", "res://locale/translations.da.translation", "res://locale/translations.de.translation", "res://locale/translations.el.translation", "res://locale/translations.en.translation", "res://locale/translations.es.translation", "res://locale/translations.fi.translation", "res://locale/translations.fr.translation", "res://locale/translations.he.translation", "res://locale/translations.hu.translation", "res://locale/translations.it.translation", "res://locale/translations.ja.translation", "res://locale/translations.ko.translation", "res://locale/translations.lzh.translation", "res://locale/translations.nb.translation", "res://locale/translations.nl.translation", "res://locale/translations.pl.translation", "res://locale/translations.pt.translation", "res://locale/translations.ro.translation", "res://locale/translations.ru.translation", "res://locale/translations.sv.translation", "res://locale/translations.th.translation", "res://locale/translations.tr.translation", "res://locale/translations.zh.translation")
+
+[layer_names]
+
+2d_physics/layer_1="Planets"
+2d_physics/layer_2="Boundary"
+2d_physics/layer_3="Collidables"
+
+[rendering]
+
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.050980393, 0.050980393, 0.14901961, 1)

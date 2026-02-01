@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://bk1jt1v7l7t4k"]
+
+[ext_resource type="Script" uid="uid://bkkkl236iqayv" path="res://game/scenes/ui/game_hud.gd" id="1_hud"]
+
+[node name="GameHUD" type="Control" unique_id=1969942477]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hud")
+
+[node name="TopBar" type="HBoxContainer" parent="." unique_id=175201895]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBar" unique_id=107414230]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopBar/MarginContainer" unique_id=843646477]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="TopBar/MarginContainer/VBoxContainer" unique_id=724879993]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "Score: 0"
+
+[node name="HighScoreLabel" type="Label" parent="TopBar/MarginContainer/VBoxContainer" unique_id=1027734427]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Best: 0"
+
+[node name="PreviewContainer" type="VBoxContainer" parent="." unique_id=402557135]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -120.0
+offset_top = 200.0
+offset_right = -20.0
+offset_bottom = 400.0
+grow_horizontal = 0
+
+[node name="CurrentContainer" type="VBoxContainer" parent="PreviewContainer" unique_id=861678933]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentLabel" type="Label" parent="PreviewContainer/CurrentContainer" unique_id=1084359809]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Current"
+horizontal_alignment = 1
+
+[node name="CurrentPreview" type="Sprite2D" parent="PreviewContainer/CurrentContainer" unique_id=1456296702]
+unique_name_in_owner = true
+visible = false
+position = Vector2(50, -26)
+
+[node name="Spacer" type="Control" parent="PreviewContainer" unique_id=576194017]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="NextContainer" type="VBoxContainer" parent="PreviewContainer" unique_id=669771038]
+layout_mode = 2
+alignment = 1
+
+[node name="NextLabel" type="Label" parent="PreviewContainer/NextContainer" unique_id=1269953578]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Next"
+horizontal_alignment = 1
+
+[node name="NextPreview" type="Sprite2D" parent="PreviewContainer/NextContainer" unique_id=732209328]
+unique_name_in_owner = true
+visible = false
+position = Vector2(50, 115)

@@ -1,0 +1,8 @@
+[Desktop Entry] (TEMP FILE - WILL NOT BE USED)
+Name=<PlaceHolderName>
+Comment=<PlaceholderShortDesc>
+Exec=<placeholdername> %F
+Icon=${SNAP}/meta/gui/icon.png
+Terminal=false
+Type=Application
+Categories=<PlaceholderCategories>

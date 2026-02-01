@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
+  <metadata>
+    <id><placeholdername></id>
+    <version><PlaceHolderVersion></version>
+    <title><PlaceHolderName></title>
+    <authors>mlmstudios</authors>
+    <projectUrl>https://github.com/mlm-games/<placeholdername></projectUrl>
+    <licenseUrl>https://github.com/mlm-games/<placeholdername>/blob/main/LICENSE</licenseUrl>
+    <iconUrl>https://cdn.statically.io/gh/mlm-games/<placeholdername>/<PlaceHolderVersion>/fastlane/metadata/android/en-US/images/icon.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description><PlaceHolderLongDesc></description>
+    <summary><PlaceHolderShortDesc></summary>
+    <tags><PlaceHolderChocoTags></tags>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+  </files>
+</package>

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bj7tt3s40xao3"]
+
+[ext_resource type="Script" uid="uid://ljqje7v1iaj3" path="res://game/scenes/game/bubble.gd" id="1_bubble"]
+[ext_resource type="Texture2D" uid="uid://dyuulu3xlbq3x" path="res://game/assets/svg/planets/field.svg" id="2_cjf2y"]
+[ext_resource type="Texture2D" uid="uid://s2qyldoixe2x" path="res://game/assets/svg/bubble.svg" id="3_bubble"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8lk4v"]
+radius = 60.0
+
+[node name="Bubble" type="Node2D" unique_id=763289440]
+position = Vector2(540, 960)
+script = ExtResource("1_bubble")
+
+[node name="BubbleVisual" type="Sprite2D" parent="." unique_id=1825675708]
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("3_bubble")
+
+[node name="WarningArea" type="Area2D" parent="." unique_id=483947078]
+collision_layer = 0
+monitorable = false
+
+[node name="FieldZone" type="StaticBody2D" parent="." unique_id=41453581]
+collision_layer = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FieldZone" unique_id=1083285461]
+shape = SubResource("CircleShape2D_8lk4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="FieldZone" unique_id=1998205893]
+scale = Vector2(0.245, 0.245)
+texture = ExtResource("2_cjf2y")

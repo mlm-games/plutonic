@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="neptune.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="1.7407349"
+     inkscape:cx="345.25648"
+     inkscape:cy="267.99026"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="false" />
+  <defs
+     id="defs1">
+    <radialGradient
+       id="earthGrad"
+       cx="62.079999"
+       cy="62.079999"
+       r="142.19999"
+       fx="62.079999"
+       fy="62.079999"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156)">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#2e6bb5"
+         id="stop2" />
+      <stop
+         offset="100%"
+         stop-color="#1a4a8a"
+         id="stop3" />
+    </radialGradient>
+    <filter
+       id="glow"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3" />
+      <feMerge
+         id="feMerge4">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4" />
+      </feMerge>
+    </filter>
+    <radialGradient
+       id="neptuneGrad"
+       cx="71.559996"
+       cy="71.559996"
+       r="142.19999"
+       fx="71.559996"
+       fy="71.559996"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="translate(156.00002,156)">
+      <stop
+         offset="0%"
+         stop-color="#5b8dd9"
+         id="stop1-7" />
+      <stop
+         offset="50%"
+         stop-color="#3a6bb5"
+         id="stop2-5" />
+      <stop
+         offset="100%"
+         stop-color="#1e4a8a"
+         id="stop3-3" />
+    </radialGradient>
+    <filter
+       id="glow-5"
+       x="-0.026666667"
+       y="-0.026666667"
+       width="1.0533333"
+       height="1.0533333">
+      <feGaussianBlur
+         stdDeviation="2"
+         result="coloredBlur"
+         id="feGaussianBlur3-6" />
+      <feMerge
+         id="feMerge4-2">
+        <feMergeNode
+           in="coloredBlur"
+           id="feMergeNode3-9" />
+        <feMergeNode
+           in="SourceGraphic"
+           id="feMergeNode4-1" />
+      </feMerge>
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <circle
+       cx="256"
+       cy="256"
+       r="90"
+       fill="url(#neptuneGrad)"
+       filter="url(#glow)"
+       id="circle4"
+       style="fill:url(#neptuneGrad);filter:url(#glow-5)" />
+    <ellipse
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       id="path1"
+       cx="259.3732"
+       cy="235.81995"
+       rx="66.351288"
+       ry="6.6064053" />
+    <ellipse
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       id="path2"
+       cx="298.43716"
+       cy="298.43716"
+       ry="3.159585"
+       rx="27.861795" />
+    <ellipse
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       id="path3"
+       cx="217.14966"
+       cy="280.05414"
+       rx="26.425621"
+       ry="0.28723499" />
+    <ellipse
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       id="path4"
+       cx="276.89453"
+       cy="198.76662"
+       rx="25.27668"
+       ry="5.7447" />
+    <ellipse
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       id="path5"
+       cx="232.08589"
+       cy="317.68192"
+       rx="12.06387"
+       ry="0.57446998" />
+    <path
+       id="path6"
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="m 326.58594,270.57617 c -11.57706,1.5e-4 -20.96484,1.2852 -20.96875,2.8711 -0.004,1.58665 9.38616,2.87302 20.96875,2.87304 6.96353,2e-5 13.47307,-0.4734 17.37304,-1.26367 0.2224,-1.02499 0.42686,-2.0538 0.61329,-3.08594 -3.7906,-0.86543 -10.61877,-1.39463 -17.98633,-1.39453 z"
+       sodipodi:nodetypes="sssccs" />
+    <path
+       id="rect6"
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:3.98093"
+       d="M 175.66406 215.42578 A 90 90 0 0 0 170.25977 228.63867 L 192.73438 228.63867 C 196.39432 228.63867 199.3418 225.69315 199.3418 222.0332 C 199.3418 218.37325 196.39432 215.42578 192.73438 215.42578 L 175.66406 215.42578 z " />
+    <path
+       id="rect7"
+       style="opacity:0.394661;fill:#ffccaa;fill-opacity:0.773791;stroke-width:4.59013"
+       d="M 221.40234 172.91602 A 90 90 0 0 0 203.00586 183.25586 L 308.99414 183.25586 A 90 90 0 0 0 290.59766 172.91602 L 221.40234 172.91602 z " />
+  </g>
+</svg>

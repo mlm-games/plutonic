@@ -1,0 +1,39 @@
+name: <placeholdername>
+base: core22
+version: '<PlaceHolderVersion>'
+summary: <PlaceHolderShortDesc>
+description: |
+  <PlaceHolderLongDesc>
+
+grade: stable
+confinement: strict
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+apps:
+  <placeholdername>:
+    command: <placeholdername>
+    extensions: [gnome]
+    plugs: [home, network, removable-media, unity7]
+
+parts:
+  <placeholdername>:
+    plugin: dump
+    source: ./builds/
+    source-type: local
+    stage-packages:
+      - libglu1-mesa
+      - libxcursor1
+      - libxinerama1
+      - libxrandr2
+      - libxi6
+      - libpulse0
+    override-build: |
+      craftctl default
+      chmod +x $SNAPCRAFT_PART_INSTALL/<placeholdername>
+
+layout:
+  /usr/share/<placeholdername>:
+    bind: $SNAP/usr/share/<placeholdername>

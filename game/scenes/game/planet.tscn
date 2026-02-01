@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://b52vwo7uebr32"]
+
+[ext_resource type="Script" uid="uid://cr8s5aixyibru" path="res://game/scenes/game/planet.gd" id="1_planet"]
+[ext_resource type="Script" uid="uid://dp25xlstlp67b" path="res://game/scenes/game/planet_eyes.gd" id="2_eyes"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_a4han"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_placeholder"]
+radius = 20.0
+
+[node name="Planet" type="RigidBody2D" unique_id=1288577233]
+collision_layer = 5
+collision_mask = 5
+physics_material_override = SubResource("PhysicsMaterial_a4han")
+gravity_scale = 0.0
+script = ExtResource("1_planet")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1006096624]
+shape = SubResource("CircleShape2D_placeholder")
+
+[node name="Visual" type="Sprite2D" parent="." unique_id=532703749]
+
+[node name="Eyes" type="Node2D" parent="." unique_id=1620789143]
+script = ExtResource("2_eyes")
+
+[node name="LeftEye" type="Polygon2D" parent="Eyes" unique_id=197589852]
+position = Vector2(-6, -3)
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(-10, 0, -7, -7, 0, -10, 7, -7, 10, 0, 7, 7, 0, 10, -7, 7)
+
+[node name="LeftPupil" type="Polygon2D" parent="Eyes/LeftEye" unique_id=539939499]
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-4, 0, -3, -3, 0, -4, 3, -3, 4, 0, 3, 3, 0, 4, -3, 3)
+
+[node name="RightEye" type="Polygon2D" parent="Eyes" unique_id=1247084106]
+position = Vector2(6, -3)
+scale = Vector2(0.3, 0.3)
+polygon = PackedVector2Array(-10, 0, -7, -7, 0, -10, 7, -7, 10, 0, 7, 7, 0, 10, -7, 7)
+
+[node name="RightPupil" type="Polygon2D" parent="Eyes/RightEye" unique_id=1960024647]
+color = Color(0.1, 0.1, 0.1, 1)
+polygon = PackedVector2Array(-4, 0, -3, -3, 0, -4, 3, -3, 4, 0, 3, 3, 0, 4, -3, 3)

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buq5m64fen17b"]
+
+[ext_resource type="Script" uid="uid://b0d6t8fnlh3xd" path="res://game/scenes/game/shooter.gd" id="1_shooter"]
+
+[node name="Shooter" type="Node2D" unique_id=1754734143]
+position = Vector2(540, 400)
+script = ExtResource("1_shooter")
+
+[node name="TrajectoryLine" type="Line2D" parent="." unique_id=1255533455]
+width = 3.0
+default_color = Color(1, 1, 1, 0.5)
+
+[node name="CurrentPlanetHolder" type="Node2D" parent="." unique_id=236166247]
+
+[node name="AimIndicator" type="Polygon2D" parent="." unique_id=1097800500]
+visible = false
+color = Color(1, 1, 1, 0.3)
+polygon = PackedVector2Array(0, -15, 10, 5, -10, 5)

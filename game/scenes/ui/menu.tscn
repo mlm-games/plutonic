@@ -1,0 +1,107 @@
+[gd_scene format=3 uid="uid://ddl5roo03rvdl"]
+
+[ext_resource type="Script" uid="uid://c2vnr035tqxi6" path="res://game/scenes/ui/menu.gd" id="1_qbs5s"]
+[ext_resource type="Script" uid="uid://cmo5qw3rubish" path="res://addons/my-ecosystem-template/buttons/anim_button.gd" id="2_5ar2c"]
+
+[node name="Menu" type="Control" unique_id=1110424127]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qbs5s")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1503575760]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+metadata/_edit_use_anchors_ = true
+
+[node name="SpacerControl3" type="Control" parent="MarginContainer" unique_id=1470603534]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.92
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="MarginContainer" unique_id=1251147006]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+bbcode_enabled = true
+text = "[font_size=80px][outline_size=15][wave]SPECLONE"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1257856842]
+layout_mode = 2
+
+[node name="SpacerControl" type="Control" parent="MarginContainer/HBoxContainer" unique_id=484654136]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.95
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1302743203]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="SpacerControl2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=149617799]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="PlayButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=835677093]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "MENU_LABEL_PLAY"
+script = ExtResource("2_5ar2c")
+
+[node name="SpacerControl3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=352523193]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CreditsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=365526297]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "Credits"
+script = ExtResource("2_5ar2c")
+
+[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1428212427]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "MENU_LABEL_QUIT"
+script = ExtResource("2_5ar2c")
+
+[node name="SpacerControl4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=16345104]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="SpacerControl2" type="Control" parent="MarginContainer/HBoxContainer" unique_id=1462539454]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.95
+
+[node name="SpacerControl4" type="Control" parent="MarginContainer" unique_id=995324049]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+mouse_filter = 2

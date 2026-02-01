@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=<PlaceHolderName>
+Comment=<PlaceholderShortDesc>
+Exec=<placeholdername> %F
+Icon=io.github.mlm_games.<placeholdername>
+Terminal=false
+Type=Application
+Categories=<PlaceholderCategories>
