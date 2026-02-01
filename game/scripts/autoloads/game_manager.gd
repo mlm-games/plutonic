@@ -4,10 +4,10 @@ signal score_changed(new_score: int)
 signal high_score_changed(new_high: int)
 signal game_over_triggered
 signal game_started
-signal sun_created  # Victory!
+signal sun_created # Victory!
 
-var score: int = 0 : set = _set_score
-var high_score: int = 0 : set = _set_high_score
+var score: int = 0: set = _set_score
+var high_score: int = 0: set = _set_high_score
 var is_game_active := false
 
 func _ready() -> void:
@@ -44,7 +44,7 @@ func notify_sun_created() -> void:
 	sun_created.emit()
 
 func get_share_text() -> String:
-	return "I scored %d points in Speclone! Can you beat my score? 🪐✨" % score
+	return "I scored %d points in Plutonic! Can you beat my score? 🪐✨" % score
 
 func _save_data() -> void:
 	var data := {"high_score": high_score}

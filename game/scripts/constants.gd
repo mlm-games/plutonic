@@ -107,4 +107,4 @@ const EYE_BLINK_INTERVAL_MIN := 2.0
 const EYE_BLINK_INTERVAL_MAX := 5.0
 const EYE_BLINK_DURATION := 0.15
 
-const SAVE_FILE := "user://speclone_save.json"
+const SAVE_FILE := "user://plutonic_save.json"
