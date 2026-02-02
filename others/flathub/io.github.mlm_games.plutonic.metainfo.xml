@@ -10,6 +10,7 @@
   </description>
   <launchable type="desktop-id">io.github.mlm_games.plutonic.desktop</launchable>
   <url type="homepage">https://github.com/mlm-games/plutonic</url>
+  <url type="vcs-browser">https://github.com/mlm-games/plutonic</url>
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/mlm-games/plutonic/refs/tags/1.0.1/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png</image>
