@@ -1,0 +1,5 @@
+Plutonic is a suika-like / sputnika-like planet combining game with gravity-based physics.
+
+ Drag and launch planets to combine them into larger celestial bodies. 
+ 
+ Features multiple planets from Pluto to ... (Find the last planet(?) yourself!)
