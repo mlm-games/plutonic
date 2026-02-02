@@ -1,3 +1,8 @@
+## v1.0.3
+
+- rm extra </screenshot>
+
+
 ## v1.0.2
 
 - do not use preview builds, set icon in project
