@@ -1,4 +1,4 @@
-extends Node2D
+extends Node2D #TODO: should change the restart button to AnimButton? Maybe no
 
 @onready var bubble: Bubble = %Bubble
 @onready var shooter: Shooter = %Shooter

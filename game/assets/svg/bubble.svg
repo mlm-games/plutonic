@@ -1,141 +1,220 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
+
 <svg
-    width="800"
-    height="800"
-    viewBox="0 0 800 800"
-    version="1.1"
-    id="svg22"
-    sodipodi:docname="bubble.svg"
-    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
-    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlns:svg="http://www.w3.org/2000/svg"
->
+   width="800"
+   height="800"
+   viewBox="0 0 800 800"
+   version="1.1"
+   id="svg22"
+   sodipodi:docname="bubble.svg"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-        id="namedview22"
-        pagecolor="#ffffff"
-        bordercolor="#000000"
-        borderopacity="0.25"
-        inkscape:showpageshadow="2"
-        inkscape:pageopacity="0.0"
-        inkscape:pagecheckerboard="0"
-        inkscape:deskcolor="#d1d1d1"
-        inkscape:zoom="0.81125"
-        inkscape:cx="399.38367"
-        inkscape:cy="429.58398"
-        inkscape:window-width="1536"
-        inkscape:window-height="902"
-        inkscape:window-x="0"
-        inkscape:window-y="0"
-        inkscape:window-maximized="1"
-        inkscape:current-layer="svg22"
-    />
-  <defs id="defs22">
+     id="namedview22"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="0.81125"
+     inkscape:cx="399.38367"
+     inkscape:cy="439.4453"
+     inkscape:window-width="1536"
+     inkscape:window-height="902"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg22" />
+  <defs
+     id="defs22">
     <radialGradient
-            id="bubbleGradient"
-            cx="400"
-            cy="400"
-            r="380"
-            gradientUnits="userSpaceOnUse"
-        >
-      <stop offset="0%" stop-color="#4a90d9" stop-opacity="0.05" id="stop1" />
-      <stop offset="50%" stop-color="#5b8dd9" stop-opacity="0.15" id="stop2" />
-      <stop offset="90%" stop-color="#6a9bd9" stop-opacity="0.25" id="stop3" />
-      <stop offset="100%" stop-color="#7aa8e0" stop-opacity="0.35" id="stop4" />
+       id="bubbleGradient"
+       cx="400"
+       cy="400"
+       r="380"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         stop-opacity="0.05"
+         id="stop1" />
+      <stop
+         offset="50%"
+         stop-color="#5b8dd9"
+         stop-opacity="0.15"
+         id="stop2" />
+      <stop
+         offset="90%"
+         stop-color="#6a9bd9"
+         stop-opacity="0.25"
+         id="stop3" />
+      <stop
+         offset="100%"
+         stop-color="#7aa8e0"
+         stop-opacity="0.35"
+         id="stop4" />
     </radialGradient>
     <radialGradient
-            id="warningGradient"
-            cx="400"
-            cy="400"
-            r="380"
-            gradientUnits="userSpaceOnUse"
-        >
-      <stop offset="0%" stop-color="#ff6b4a" stop-opacity="0.08" id="stop5" />
-      <stop offset="50%" stop-color="#ff7b5a" stop-opacity="0.2" id="stop6" />
-      <stop offset="90%" stop-color="#ff8b6a" stop-opacity="0.35" id="stop7" />
-      <stop offset="100%" stop-color="#ff9b7a" stop-opacity="0.5" id="stop8" />
+       id="warningGradient"
+       cx="400"
+       cy="400"
+       r="380"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="0%"
+         stop-color="#ff6b4a"
+         stop-opacity="0.08"
+         id="stop5" />
+      <stop
+         offset="50%"
+         stop-color="#ff7b5a"
+         stop-opacity="0.2"
+         id="stop6" />
+      <stop
+         offset="90%"
+         stop-color="#ff8b6a"
+         stop-opacity="0.35"
+         id="stop7" />
+      <stop
+         offset="100%"
+         stop-color="#ff9b7a"
+         stop-opacity="0.5"
+         id="stop8" />
     </radialGradient>
-    <linearGradient id="borderGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#4a90d9" stop-opacity="0.6" id="stop9" />
-      <stop offset="50%" stop-color="#6a9bd9" stop-opacity="0.8" id="stop10" />
-      <stop offset="100%" stop-color="#4a90d9" stop-opacity="0.6" id="stop11" />
+    <linearGradient
+       id="borderGradient"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#4a90d9"
+         stop-opacity="0.6"
+         id="stop9" />
+      <stop
+         offset="50%"
+         stop-color="#6a9bd9"
+         stop-opacity="0.8"
+         id="stop10" />
+      <stop
+         offset="100%"
+         stop-color="#4a90d9"
+         stop-opacity="0.6"
+         id="stop11" />
     </linearGradient>
     <linearGradient
-            id="warningBorderGradient"
-            x1="0%"
-            y1="0%"
-            x2="100%"
-            y2="100%"
-        >
-      <stop offset="0%" stop-color="#ff5a5a" stop-opacity="0.7" id="stop12" />
-      <stop offset="50%" stop-color="#ff7a7a" stop-opacity="0.9" id="stop13" />
-      <stop offset="100%" stop-color="#ff5a5a" stop-opacity="0.7" id="stop14" />
+       id="warningBorderGradient"
+       x1="0%"
+       y1="0%"
+       x2="100%"
+       y2="100%">
+      <stop
+         offset="0%"
+         stop-color="#ff5a5a"
+         stop-opacity="0.7"
+         id="stop12" />
+      <stop
+         offset="50%"
+         stop-color="#ff7a7a"
+         stop-opacity="0.9"
+         id="stop13" />
+      <stop
+         offset="100%"
+         stop-color="#ff5a5a"
+         stop-opacity="0.7"
+         id="stop14" />
     </linearGradient>
     <radialGradient
-            id="innerGlow"
-            cx="400"
-            cy="400"
-            r="350"
-            gradientUnits="userSpaceOnUse"
-        >
-      <stop offset="70%" stop-color="#ffffff" stop-opacity="0" id="stop15" />
-      <stop offset="85%" stop-color="#8ab4e8" stop-opacity="0.1" id="stop16" />
-      <stop offset="95%" stop-color="#a8c8f0" stop-opacity="0.2" id="stop17" />
-      <stop offset="100%" stop-color="#c8dcf8" stop-opacity="0.3" id="stop18" />
+       id="innerGlow"
+       cx="400"
+       cy="400"
+       r="350"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         offset="70%"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop15" />
+      <stop
+         offset="85%"
+         stop-color="#8ab4e8"
+         stop-opacity="0.1"
+         id="stop16" />
+      <stop
+         offset="95%"
+         stop-color="#a8c8f0"
+         stop-opacity="0.2"
+         id="stop17" />
+      <stop
+         offset="100%"
+         stop-color="#c8dcf8"
+         stop-opacity="0.3"
+         id="stop18" />
     </radialGradient>
     <radialGradient
-            id="warningInnerGlow"
-            cx="400"
-            cy="400"
-            r="350"
-            gradientUnits="userSpaceOnUse"
-        >
-      <stop offset="70%" stop-color="#ffffff" stop-opacity="0" id="stop19" />
-      <stop offset="85%" stop-color="#ff9a8a" stop-opacity="0.15" id="stop20" />
-      <stop offset="95%" stop-color="#ffb0a0" stop-opacity="0.25" id="stop21" />
+       id="warningInnerGlow"
+       cx="400"
+       cy="400"
+       r="350"
+       gradientUnits="userSpaceOnUse">
       <stop
-                offset="100%"
-                stop-color="#ffc8b8"
-                stop-opacity="0.35"
-                id="stop22"
-            />
+         offset="70%"
+         stop-color="#ffffff"
+         stop-opacity="0"
+         id="stop19" />
+      <stop
+         offset="85%"
+         stop-color="#ff9a8a"
+         stop-opacity="0.15"
+         id="stop20" />
+      <stop
+         offset="95%"
+         stop-color="#ffb0a0"
+         stop-opacity="0.25"
+         id="stop21" />
+      <stop
+         offset="100%"
+         stop-color="#ffc8b8"
+         stop-opacity="0.35"
+         id="stop22" />
     </radialGradient>
   </defs>
   <circle
-        cx="400"
-        cy="400"
-        r="380"
-        fill="url(#bubbleGradient)"
-        id="bubbleFill"
-    />
+     cx="400"
+     cy="400"
+     r="380"
+     fill="url(#bubbleGradient)"
+     id="bubbleFill" />
   <circle
-        cx="400"
-        cy="400"
-        r="350"
-        fill="url(#innerGlow)"
-        id="innerGlowCircle"
-    />
+     cx="400"
+     cy="400"
+     r="350"
+     fill="url(#innerGlow)"
+     id="innerGlowCircle" />
   <circle
-        cx="400"
-        cy="400"
-        r="380"
-        fill="none"
-        stroke="url(#borderGradient)"
-        stroke-width="6"
-        id="bubbleBorder"
-        style="display:none;opacity:0.164599"
-    />
+     cx="400"
+     cy="400"
+     r="380"
+     fill="none"
+     stroke="url(#borderGradient)"
+     stroke-width="6"
+     id="bubbleBorder"
+     style="display:none;opacity:0.164599" />
   <circle
-        cx="400"
-        cy="400"
-        r="374"
-        fill="none"
-        stroke="#7aa8e0"
-        stroke-width="2"
-        stroke-opacity="0.4"
-        id="bubbleInnerBorder"
-        style="display:none"
-    />
+     cx="400"
+     cy="400"
+     r="374"
+     fill="none"
+     stroke="#7aa8e0"
+     stroke-width="2"
+     stroke-opacity="0.4"
+     id="bubbleInnerBorder"
+     style="display:none" />
 </svg>
