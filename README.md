@@ -8,4 +8,4 @@ A suika-like / spuntika-like game that supports pluto's inclusion into our solar
 
 Drag backwards to launch the planet! The harder you drag, the farther it goes.
 
-
+Check the itch.io [page](https://ragebreaker.itch.io/plutonic) for more info
