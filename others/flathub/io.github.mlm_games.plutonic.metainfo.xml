@@ -38,11 +38,18 @@
     </screenshot> -->
   </screenshots>
   <releases>
+    <release version="1.0.4" date="2026-02-02" type="stable">
+      <description>
+        <ul>
+          <li>add descs</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.0.1" date="2026-02-01">
       <url type="details">https://github.com/mlm-games/plutonic/releases</url>
     </release>
   </releases>
-  <content_rating type="oars-1.1"></content_rating>
+  <content_rating type="oars-1.1"/>
   <developer id="io.github.mlm_games">
     <name>MLM Games</name>
   </developer>
