@@ -51,23 +51,6 @@ offset_right = -20.0
 offset_bottom = 400.0
 grow_horizontal = 0
 
-[node name="CurrentContainer" type="VBoxContainer" parent="PreviewContainer" unique_id=861678933]
-layout_mode = 2
-alignment = 1
-
-[node name="CurrentLabel" type="Label" parent="PreviewContainer/CurrentContainer" unique_id=1084359809]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Current"
-horizontal_alignment = 1
-
-[node name="CurrentPreview" type="Sprite2D" parent="PreviewContainer/CurrentContainer" unique_id=1456296702]
-unique_name_in_owner = true
-visible = false
-position = Vector2(50, -26)
-
 [node name="Spacer" type="Control" parent="PreviewContainer" unique_id=576194017]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
@@ -76,9 +59,7 @@ layout_mode = 2
 layout_mode = 2
 alignment = 1
 
-[node name="NextLabel" type="Label" parent="PreviewContainer/NextContainer" unique_id=1269953578]
-unique_name_in_owner = true
-visible = false
+[node name="NextTextLabel" type="Label" parent="PreviewContainer/NextContainer" unique_id=1269953578]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "Next"
@@ -86,5 +67,12 @@ horizontal_alignment = 1
 
 [node name="NextPreview" type="Sprite2D" parent="PreviewContainer/NextContainer" unique_id=732209328]
 unique_name_in_owner = true
+position = Vector2(50, 85)
+
+[node name="NextLabel" type="Label" parent="PreviewContainer/NextContainer" unique_id=1485915917]
+unique_name_in_owner = true
 visible = false
-position = Vector2(50, 115)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Sun"
+horizontal_alignment = 1

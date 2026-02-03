@@ -1,13 +1,16 @@
 class_name Shooter extends Node2D
 
 signal planet_shot(planet: Planet)
+signal next_planet_tier_changed(tier)
 
 @onready var trajectory_line: Line2D = $TrajectoryLine
 @onready var current_planet_holder: Node2D = $CurrentPlanetHolder
 @onready var aim_indicator: Polygon2D = $AimIndicator
 
 var current_planet: Planet = null
-var next_planet_tier: int = 0
+var next_planet_tier: int = 0:
+	set(val): next_planet_tier = val; next_planet_tier_changed.emit(val)
+
 var is_aiming := false
 var aim_start_pos := Vector2.ZERO
 var aim_current_pos := Vector2.ZERO
@@ -18,11 +21,13 @@ const TRAJECTORY_TIME := 0.8
 
 func _ready() -> void:
 	trajectory_line.visible = false
+	
+	next_planet_tier = _get_random_spawn_tier()
 	_spawn_next_planet()
+	
 
 func _spawn_next_planet() -> void:
-	# favor smaller oines (make it favor lager ones later in-game)
-	next_planet_tier = _get_random_spawn_tier()
+	# favor smaller ones (make it favor lager ones later in-game)
 
 	current_planet = preload("res://game/scenes/game/planet.tscn").instantiate()
 	current_planet.freeze = true

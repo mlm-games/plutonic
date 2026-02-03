@@ -2,10 +2,9 @@ extends Control
 
 @onready var score_label: Label = %ScoreLabel
 @onready var high_score_label: Label = %HighScoreLabel
-@onready var current_preview: Sprite2D = %CurrentPreview
 @onready var next_preview: Sprite2D = %NextPreview
-@onready var current_label: Label = %CurrentLabel
 @onready var next_label: Label = %NextLabel
+
 
 const PLANET_TEXTURES: Array[String] = [
 	"res://game/assets/svg/planets/pluto.svg",
@@ -33,9 +32,6 @@ func _on_score_changed(new_score: int) -> void:
 
 func _on_high_score_changed(new_high: int) -> void:
 	high_score_label.text = tr("GAME_OBJECTIVE_HIGH_SCORE") + ": %d" % new_high
-
-func update_current_preview(tier: int) -> void:
-	_update_preview(current_preview, current_label, tier)
 
 func update_next_preview(tier: int) -> void:
 	_update_preview(next_preview, next_label, tier)

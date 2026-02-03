@@ -9,7 +9,7 @@ func _ready() -> void:
 	_setup_background()
 	GameManager.start_game()
 	bubble.planet_escaped.connect(_on_planet_escaped)
-	shooter.planet_shot.connect(_on_planet_shot)
+	shooter.next_planet_tier_changed.connect(_on_next_planet_teir_changed)
 
 func _setup_background() -> void:
 	background.color = Color(0.05, 0.05, 0.15)
@@ -47,8 +47,8 @@ func _on_planet_escaped(_planet: Planet) -> void:
 		GameManager.end_game()
 		_show_game_over()
 
-func _on_planet_shot(_planet: Planet) -> void:
-	hud.update_next_preview(shooter.get_next_planet_tier())
+func _on_next_planet_teir_changed(tier: int) -> void:
+	hud.update_next_preview(tier)
 
 func _show_game_over() -> void:
 	var game_over_screen := preload("res://game/scenes/ui/game_over_screen.tscn").instantiate()
