@@ -316,8 +316,8 @@
      id="rect1"
      width="880.12329"
      height="889.98456"
-     x="-13.559322"
-     y="-16.024652"
+     x="-40.061646"
+     y="-44.992279"
      ry="6.0014567" />
   <circle
      cx="400.00037"
@@ -389,7 +389,7 @@
      style="display:none" />
   <text
      xml:space="preserve"
-     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128.448px;font-family:'Noto Serif Todhri';-inkscape-font-specification:'Noto Serif Todhri';writing-mode:lr-tb;direction:ltr;opacity:1;fill:#37c871;fill-opacity:0.772549;stroke:#2ca05a;stroke-width:19.15936094;stroke-linecap:round;stroke-linejoin:bevel;paint-order:stroke fill markers"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:128.448px;font-family:'Noto Serif Todhri';-inkscape-font-specification:'Noto Serif Todhri';writing-mode:lr-tb;direction:ltr;display:none;opacity:1;fill:#37c871;fill-opacity:0.772549;stroke:#2ca05a;stroke-width:19.1594;stroke-linecap:round;stroke-linejoin:bevel;paint-order:stroke fill markers"
      x="-36.285519"
      y="536.30988"
      id="text1"
@@ -398,5 +398,5 @@
        id="tspan1"
        x="-36.285519"
        y="536.30988"
-       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold Italic';fill:#ffffff;stroke:#2ca05a;stroke-width:19.15936094;stroke-linecap:round;stroke-linejoin:bevel;paint-order:stroke fill markers">PLUTONIC</tspan></text>
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:Sans;-inkscape-font-specification:'Sans Bold Italic';fill:#ffffff;stroke:#2ca05a;stroke-width:19.1594;stroke-linecap:round;stroke-linejoin:bevel;paint-order:stroke fill markers">PLUTONIC</tspan></text>
 </svg>
