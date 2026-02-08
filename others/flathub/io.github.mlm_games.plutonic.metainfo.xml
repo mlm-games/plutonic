@@ -4,7 +4,7 @@
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>GPL-3.0-or-later</project_license>
   <name>Plutonic</name>
-  <summary>Suikalike game where you shoot planets in space</summary>
+  <summary>Gravity-based planetary Suikalike</summary>
   <description>
     <p>A Suikalike game where you shoot planets in space. Based on an existing game called sputnik, but open source </p>
   </description>
@@ -14,7 +14,7 @@
   <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/mlm-games/plutonic/refs/tags/1.0.1/fastlane/metadata/android/en-US/images/phoneScreenshots/1.png</image>
-      <caption>Main Menu Screenshot</caption>
+      <caption>Main Screenshot</caption>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/mlm-games/plutonic/refs/tags/1.0.1/fastlane/metadata/android/en-US/images/phoneScreenshots/2.png</image>
