@@ -89,6 +89,7 @@ const PLANET_SCORES: Array[int] = [
 
 const GRAVITY_STRENGTH := 1000.0
 const SHOOT_FORCE := 600.0
+const SHOOT_ROT_MULT = 600.0
 const MAX_SHOOT_FORCE := 1200.0
 const PLANET_DENSITY := 1.0
 const PLANET_FRICTION := 0.3

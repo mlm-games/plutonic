@@ -30,17 +30,20 @@ func _check_planets(delta: float) -> void:
 	var planets_in_danger := 0
 	
 	for planet: Planet in get_tree().get_nodes_in_group("planets"):
-		if not planet.has_been_shot or not planet.has_collided_once:
+		if not planet.has_been_shot:
 			continue
 		
 		var distance := global_position.distance_to(planet.global_position)
 		var planet_radius: float = C.PLANET_RADII[planet.tier]
 		
-		if distance + planet_radius > C.BUBBLE_RADIUS:
+		if distance + planet_radius > C.BUBBLE_RADIUS and not planet.touching.is_empty():
 			# Planet is outside
 			if not _planets_outside.has(planet):
 				_planets_outside[planet] = 0.0
-			_planets_outside[planet] += delta
+			if planet.touching.size() > 1:
+				_planets_outside[planet] += delta
+			else:
+				_planets_outside[planet] = 0
 			
 			# Show dead eyes on planet
 			if planet.eyes:

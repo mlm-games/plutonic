@@ -9,12 +9,12 @@ signal merged(resulting_tier: int)
 var tier: int = 0: set = set_tier
 var is_merging := false
 var has_been_shot := false 
-var has_collided_once := false
+var touching: Dictionary = {}
 
 func _ready() -> void:
 	contact_monitor = true
-	max_contacts_reported = 4
-	body_entered.connect(_on_body_entered)
+	# max_contacts_reported = 4
+	# body_entered.connect(_on_body_entered)
 
 func set_tier(value: int) -> void:
 	tier = clampi(value, 0, C.PlanetType.SUN)
@@ -41,6 +41,8 @@ func _update_visuals() -> void:
 	# Update physics
 	var area := PI * radius * radius
 	mass = area * C.PLANET_DENSITY * 0.001 # Reduce 
+	inertia = area * C.PLANET_DENSITY * 0.001 # Reduce 
+	
 	physics_material_override = PhysicsMaterial.new()
 	physics_material_override.friction = C.PLANET_FRICTION
 	physics_material_override.bounce = C.PLANET_BOUNCE
@@ -49,9 +51,15 @@ func _on_body_entered(other: Node) -> void:
 	if is_merging or not has_been_shot:
 		return
 	if other is Planet and other.has_been_shot and not other.is_merging:
-		has_collided_once = true
+		touching[other] = true
 		if other.tier == tier and tier < C.PlanetType.SUN:
 			_attempt_merge(other)
+
+func _on_body_exited(other: Node) -> void:
+	if not has_been_shot:
+		return
+	if other is Planet and other in touching:
+		touching.erase(other)
 
 func _attempt_merge(other: Planet) -> void:
 	# Ensure only one planet handles the merge (very rarely causes issues, where 2 of same size do not merge)
@@ -65,6 +73,9 @@ func _attempt_merge(other: Planet) -> void:
 	var new_tier := tier + 1
 	
 	_spawn_merge_particles(merge_position, new_tier)
+	
+	for otouching: Planet in other.touching:
+		otouching.touching.erase(other)
 	
 	other.queue_free()
 	
