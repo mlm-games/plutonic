@@ -8,7 +8,7 @@ extends Control
 @onready var menu_button: Button = %MenuButton
 
 func _ready() -> void:
-	final_score_label.text = tr("GAME_OBJECTIVE_HIGH_SCORE") + ": %d" % GameManager.score
+	final_score_label.text = tr("GAME_OBJECTIVE_SCORE") + ": %d" % GameManager.score
 	high_score_label.text = tr("GAME_OBJECTIVE_HIGH_SCORE") + ": %d" % GameManager.high_score
 	new_best_label.visible = GameManager.score >= GameManager.high_score and GameManager.score > 0
 	
