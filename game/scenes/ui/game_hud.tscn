@@ -65,14 +65,16 @@ theme_override_font_sizes/font_size = 32
 text = "Next"
 horizontal_alignment = 1
 
-[node name="NextPreview" type="Sprite2D" parent="PreviewContainer/NextContainer" unique_id=732209328]
+[node name="NextPreview" type="TextureRect" parent="PreviewContainer/NextContainer" unique_id=732209328]
 unique_name_in_owner = true
-position = Vector2(50, 85)
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
 
 [node name="NextLabel" type="Label" parent="PreviewContainer/NextContainer" unique_id=1485915917]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Sun"
+theme_override_font_sizes/font_size = 28
+text = "Pluto"
 horizontal_alignment = 1

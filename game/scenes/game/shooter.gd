@@ -1,7 +1,7 @@
 class_name Shooter extends Node2D
 
 signal planet_shot(planet: Planet)
-signal next_planet_tier_changed(tier)
+signal next_planet_tier_changed(tier: int)
 
 @onready var trajectory_line: Line2D = $TrajectoryLine
 @onready var current_planet_holder: Node2D = $CurrentPlanetHolder
@@ -9,7 +9,10 @@ signal next_planet_tier_changed(tier)
 
 var current_planet: Planet = null
 var next_planet_tier: int = 0:
-	set(val): next_planet_tier = val; next_planet_tier_changed.emit(val)
+	set(val):
+		if next_planet_tier != val:
+			next_planet_tier = val
+			next_planet_tier_changed.emit(val)
 
 var is_aiming := false
 var aim_start_pos := Vector2.ZERO
