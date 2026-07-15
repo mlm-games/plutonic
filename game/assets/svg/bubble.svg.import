@@ -15,4 +15,6 @@ dest_files=["res://.godot/imported/bubble.svg-67e3be868fcd18a400046816051fe37a.d
 base_scale=1.0
 saturation=1.0
 color_map={}
+fix_alpha_border=false
+premult_alpha=false
 compress=true
