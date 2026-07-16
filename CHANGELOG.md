@@ -1,3 +1,8 @@
+## v1.1.0
+
+- Add a pause menu and save handling (#9)
+
+
 ## v1.0.4
 
 - add descs
