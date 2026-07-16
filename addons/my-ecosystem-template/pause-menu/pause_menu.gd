@@ -16,18 +16,20 @@ func _ready() -> void:
 	%QuitButton.pressed.connect(_on_quit_button_pressed)
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel"): # Use a dedicated "pause" action in your project
-		#if A.tree.paused: #causes other bugs, like unpausing in settings
-			#unpause()
-		#else:
-		if not A.tree.paused: pause()
-		%ResumeButton.grab_focus()
+	if event.is_action_pressed("ui_cancel"):
+		if A.tree.paused and visible:
+			unpause()
+		elif not A.tree.paused:
+			pause()
+			%ResumeButton.grab_focus()
 		get_viewport().set_input_as_handled()
 
 func pause() -> void:
 	A.tree.paused = true
 	page_animator.animate_in()
 	resume_button.grab_focus()
+	if GameManager and GameManager.has_method("save_game_state"):
+		GameManager.save_game_state()
 
 func unpause() -> void:
 	# We unpause *after* the animation is done.

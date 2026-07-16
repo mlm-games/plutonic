@@ -34,8 +34,12 @@ const TRAJECTORY_TIME := 0.8
 func _ready() -> void:
 	trajectory_line.visible = false
 	
-	next_planet_tier = _get_random_spawn_tier()
-	_spawn_next_planet()
+	if GameManager.pending_load_data.is_empty():
+		next_planet_tier = _get_random_spawn_tier()
+		_spawn_next_planet()
+	else:
+		next_planet_tier = _get_random_spawn_tier()
+		# Will be overridden by restore_from_save
 
 func _spawn_next_planet() -> void:
 	# favor smaller ones (make it favor lager ones later in-game)
@@ -60,6 +64,21 @@ func _get_random_spawn_tier() -> int:
 		if roll < cumulative:
 			return i
 	return 0
+
+func restore_from_save(data: Dictionary) -> void:
+	next_planet_tier = data.get("next_planet_tier", _get_random_spawn_tier())
+	var curr_tier = data.get("current_planet_tier", -1)
+	if curr_tier >= 0:
+		if current_planet:
+			current_planet.queue_free()
+		current_planet = preload("res://game/scenes/game/planet.tscn").instantiate()
+		current_planet.freeze = true
+		current_planet.add_to_group("planets")
+		current_planet_holder.add_child(current_planet)
+		current_planet.tier = curr_tier
+	else:
+		_spawn_next_planet()
+	next_planet_tier_changed.emit(next_planet_tier)
 
 func get_next_planet_tier() -> int:
 	return next_planet_tier
@@ -195,6 +214,7 @@ func _shoot(direction: Vector2, power: float) -> void:
 	current_planet = null
 
 	get_tree().create_timer(0.3).timeout.connect(_spawn_next_planet)
+	get_tree().create_timer(0.5).timeout.connect(GameManager.save_game_state)
 
 func _update_touch_trajectory() -> void:
 	var direction := (aim_start_pos - aim_current_pos).normalized()

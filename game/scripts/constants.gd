@@ -108,3 +108,5 @@ const EYE_BLINK_INTERVAL_MAX := 5.0
 const EYE_BLINK_DURATION := 0.15
 
 const SAVE_FILE := "user://plutonic_save.json"
+const GAME_SAVE_FILE := "user://plutonic_game_save.json"
+const SAVE_VERSION := 1

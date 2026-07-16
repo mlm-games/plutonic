@@ -4,6 +4,7 @@ extends Control
 @onready var high_score_label: Label = %HighScoreLabel
 @onready var next_preview: TextureRect = %NextPreview
 @onready var next_label: Label = %NextLabel
+@onready var pause_button: Button = %PauseButton
 
 func _ready() -> void:
 	GameManager.score_changed.connect(_on_score_changed)
@@ -11,6 +12,13 @@ func _ready() -> void:
 	
 	_on_score_changed(GameManager.score)
 	_on_high_score_changed(GameManager.high_score)
+	
+	pause_button.pressed.connect(_on_pause_pressed)
+
+func _on_pause_pressed() -> void:
+	var pm = PauseMenu.get_node("PauseMenu") as Control
+	if pm and pm.has_method("pause"):
+		pm.pause()
 
 func _on_score_changed(new_score: int) -> void:
 	score_label.text = tr("GAME_OBJECTIVE_SCORE")  + ": %d" % new_score

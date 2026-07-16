@@ -69,6 +69,14 @@ theme_override_font_sizes/font_size = 60
 text = "MENU_LABEL_PLAY"
 script = ExtResource("2_5ar2c")
 
+[node name="ContinueButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=935677094]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "MENU_LABEL_CONTINUE"
+script = ExtResource("2_5ar2c")
+
 [node name="SpacerControl3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=352523193]
 layout_mode = 2
 size_flags_horizontal = 3

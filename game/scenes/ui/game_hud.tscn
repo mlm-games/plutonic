@@ -1,6 +1,14 @@
 [gd_scene format=3 uid="uid://bk1jt1v7l7t4k"]
 
 [ext_resource type="Script" uid="uid://bkkkl236iqayv" path="res://game/scenes/ui/game_hud.gd" id="1_hud"]
+[ext_resource type="Texture2D" uid="uid://c5vnlu2q1v4cm" path="res://game/assets/svg/pause.svg" id="2_agl67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agl67"]
+bg_color = Color(1, 1, 1, 0.12941177)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="GameHUD" type="Control" unique_id=1969942477]
 layout_mode = 3
@@ -39,6 +47,23 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Best: 0"
+
+[node name="PauseButton" type="Button" parent="." unique_id=302557135]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -120.0
+offset_right = 127.0
+offset_bottom = -20.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_agl67")
+icon = ExtResource("2_agl67")
+icon_alignment = 1
+expand_icon = true
 
 [node name="PreviewContainer" type="VBoxContainer" parent="." unique_id=402557135]
 layout_mode = 1
