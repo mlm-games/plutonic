@@ -28,3 +28,6 @@ position = Vector2(540, 1464)
 metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="." unique_id=827534289]
+
+[node name="PlanetHolder" type="Node2D" parent="." unique_id=806498134]
+unique_name_in_owner = true
