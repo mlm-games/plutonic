@@ -45,15 +45,7 @@ func _apply_central_gravity() -> void:
 	for planet : Planet in get_tree().get_nodes_in_group("planets"):
 		if not planet.has_been_shot:
 			continue
-		
-		var to_center := C.BUBBLE_CENTER - planet.global_position
-		var distance := to_center.length()
-		
-		if distance > 1.0:  # division by zero exception
-			var gravity_direction := to_center.normalized()
-			var gravity_force := gravity_direction * C.GRAVITY_STRENGTH * planet.mass
-			#planet.apply_central_force(gravity_force)
-			planet.apply_central_force(Vector2(gravity_force.x, gravity_force.y/1.2))
+		planet.apply_central_force(C.gravity_acceleration(planet.global_position) * planet.mass)
 
 func _restore_game_state(data: Dictionary) -> void:
 	for p in get_tree().get_nodes_in_group("planets"):

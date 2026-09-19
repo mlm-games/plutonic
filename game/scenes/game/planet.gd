@@ -8,13 +8,17 @@ signal merged(resulting_tier: int)
 
 var tier: int = 0: set = set_tier
 var is_merging := false
-var has_been_shot := false 
+var has_been_shot := false
+var has_collided_once := false
 var touching: Dictionary = {}
 
 func _ready() -> void:
 	contact_monitor = true
-	# max_contacts_reported = 4
-	# body_entered.connect(_on_body_entered)
+	max_contacts_reported = 8
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	if not body_exited.is_connected(_on_body_exited):
+		body_exited.connect(_on_body_exited)
 
 func set_tier(value: int) -> void:
 	tier = clampi(value, 0, C.PlanetType.SUN)
@@ -52,6 +56,7 @@ func _on_body_entered(other: Node) -> void:
 		return
 	if other is Planet and other.has_been_shot and not other.is_merging:
 		touching[other] = true
+		has_collided_once = true
 		if other.tier == tier and tier < C.PlanetType.SUN:
 			_attempt_merge(other)
 
@@ -76,6 +81,8 @@ func _attempt_merge(other: Planet) -> void:
 	
 	for otouching: Planet in other.touching:
 		otouching.touching.erase(other)
+	touching.erase(other)
+	other.touching.clear()
 	
 	other.queue_free()
 	

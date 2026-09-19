@@ -8,7 +8,9 @@ signal sun_created
 
 var score: int = 0: set = _set_score
 var high_score: int = 0: set = _set_high_score
+var previous_high_score: int = 0
 var is_game_active := false
+var storage_available := true
 var pending_load_data: Dictionary = {}
 var last_save_timestamp: float = 0.0
 
@@ -37,6 +39,7 @@ func _set_high_score(value: int) -> void:
 
 func start_game(load_if_available: bool = false) -> void:
 	score = 0
+	previous_high_score = high_score
 	is_game_active = true
 	if load_if_available and has_game_save():
 		pending_load_data = _read_game_save()
@@ -49,8 +52,12 @@ func end_game() -> void:
 	is_game_active = false
 	if score > high_score:
 		high_score = score
+	_save_data()
 	clear_game_save()
 	game_over_triggered.emit()
+
+func is_new_best() -> bool:
+	return score > previous_high_score and score > 0
 
 func add_score(planet_tier: int) -> void:
 	if planet_tier >= 0 and planet_tier < C.PLANET_SCORES.size():
@@ -112,9 +119,13 @@ func save_game_state() -> void:
 	}
 
 	var file := FileAccess.open(C.GAME_SAVE_FILE, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(data, "\t"))
-		last_save_timestamp = data.timestamp
+	if file == null:
+		storage_available = false
+		push_warning("Storage unavailable, skipping game save")
+		return
+	file.store_string(JSON.stringify(data, "\t"))
+	file.close()
+	last_save_timestamp = data.timestamp
 
 func _read_game_save() -> Dictionary:
 	if not has_game_save():
@@ -140,13 +151,21 @@ func prepare_continue() -> void:
 func _save_data() -> void:
 	var data := {"high_score": high_score}
 	var file := FileAccess.open(C.SAVE_FILE, FileAccess.WRITE)
-	if file:
-		file.store_string(JSON.stringify(data))
+	if file == null:
+		storage_available = false
+		push_warning("Storage unavailable, skipping high score save")
+		return
+	file.store_string(JSON.stringify(data))
+	file.close()
 
 func _load_data() -> void:
-	if FileAccess.file_exists(C.SAVE_FILE):
-		var file := FileAccess.open(C.SAVE_FILE, FileAccess.READ)
-		if file:
-			var data = JSON.parse_string(file.get_as_text())
-			if data is Dictionary:
-				high_score = data.get("high_score", 0)
+	if not FileAccess.file_exists(C.SAVE_FILE):
+		return
+	var file := FileAccess.open(C.SAVE_FILE, FileAccess.READ)
+	if file == null:
+		storage_available = false
+		return
+	var data = JSON.parse_string(file.get_as_text())
+	if data is Dictionary:
+		high_score = data.get("high_score", 0)
+		previous_high_score = high_score

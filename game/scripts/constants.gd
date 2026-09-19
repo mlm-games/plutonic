@@ -88,6 +88,7 @@ const PLANET_SCORES: Array[int] = [
 ]
 
 const GRAVITY_STRENGTH := 1000.0
+const GRAVITY_Y_DIVISOR := 1.2
 const SHOOT_FORCE := 600.0
 const SHOOT_ROT_MULT = 600.0
 const MAX_SHOOT_FORCE := 1200.0
@@ -97,6 +98,15 @@ const PLANET_BOUNCE := 0.2
 
 const BUBBLE_RADIUS := 400.0
 const BUBBLE_CENTER := Vector2(540, 712)
+
+
+static func gravity_acceleration(pos: Vector2) -> Vector2:
+	var to_center := BUBBLE_CENTER - pos
+	var distance := to_center.length()
+	if distance < 1.0:
+		return Vector2.ZERO
+	var force := to_center.normalized() * GRAVITY_STRENGTH
+	return Vector2(force.x, force.y / GRAVITY_Y_DIVISOR)
 
 const GRACE_PERIOD := 1.5 # Seconds before game over triggers
 const BOUNDARY_CHECK_MARGIN := 10.0 # Pixels outside bubble before warning

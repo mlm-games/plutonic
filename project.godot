@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-#...existingautoloads...WindowManager="*res://game/scripts/autoloads/window_manager.gd"
 STransitions="*res://addons/my-ecosystem-template/transitions/screen_transitions.tscn"
 SettingsManager="*uid://wfehnu87uuxk"
 SettingsApplier="*uid://b5jtf7dbnupqj"

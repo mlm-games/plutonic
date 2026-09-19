@@ -141,25 +141,25 @@ func _handle_controller_input(delta: float) -> void:
 	if is_using_controller:
 		aim_indicator.rotation = controller_aim_angle - rotation
 
-func _update_controller_trajectory() -> void:
-	# Direction is independent of shooter position
-	var direction := Vector2(cos(controller_aim_angle), sin(controller_aim_angle))
-	var power := clampf(controller_power, 0.1, 1.0)
-	
-	var velocity := direction * C.SHOOT_FORCE * power
+func _simulate_trajectory(direction: Vector2, power: float) -> PackedVector2Array:
 	var points := PackedVector2Array()
 	var sim_pos := global_position
-	var sim_vel := velocity
+	var sim_vel := direction * C.SHOOT_FORCE * power
 	var dt := TRAJECTORY_TIME / TRAJECTORY_SEGMENTS
 
 	for i in TRAJECTORY_SEGMENTS:
 		points.append(sim_pos - global_position) # Local coords
-		var to_center := C.BUBBLE_CENTER - sim_pos
-		var gravity_force := to_center.normalized() * C.GRAVITY_STRENGTH
-		sim_vel += gravity_force * dt
+		sim_vel += C.gravity_acceleration(sim_pos) * dt
 		sim_pos += sim_vel * dt
 
-	trajectory_line.points = points
+	return points
+
+func _update_controller_trajectory() -> void:
+	# Direction is independent of shooter position
+	var direction := Vector2(cos(controller_aim_angle), sin(controller_aim_angle))
+	var power := clampf(controller_power, 0.1, 1.0)
+
+	trajectory_line.points = _simulate_trajectory(direction, power)
 
 func _release_controller_shot() -> void:
 	controller_charging = false
@@ -226,23 +226,7 @@ func _update_touch_trajectory() -> void:
 		trajectory_line.clear_points()
 		return
 
-	var velocity := direction * C.SHOOT_FORCE * power
-	var points := PackedVector2Array()
-	var sim_pos := global_position
-	var sim_vel := velocity
-	var dt := TRAJECTORY_TIME / TRAJECTORY_SEGMENTS
-
-	for i in TRAJECTORY_SEGMENTS:
-		points.append(sim_pos - global_position) # Local coords
-
-		# Simulate gravity toward center
-		var to_center := C.BUBBLE_CENTER - sim_pos
-		var gravity_force := to_center.normalized() * C.GRAVITY_STRENGTH
-
-		sim_vel += gravity_force * dt
-		sim_pos += sim_vel * dt
-
-	trajectory_line.points = points
+	trajectory_line.points = _simulate_trajectory(direction, power)
 
 func set_shooter_angle(angle: float) -> void:
 	var offset := Vector2(cos(angle), sin(angle)) * SHOOTER_DISTANCE

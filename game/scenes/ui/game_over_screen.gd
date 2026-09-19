@@ -10,7 +10,7 @@ extends Control
 func _ready() -> void:
 	final_score_label.text = tr("GAME_OBJECTIVE_SCORE") + ": %d" % GameManager.score
 	high_score_label.text = tr("GAME_OBJECTIVE_HIGH_SCORE") + ": %d" % GameManager.high_score
-	new_best_label.visible = GameManager.score >= GameManager.high_score and GameManager.score > 0
+	new_best_label.visible = GameManager.is_new_best()
 	
 	restart_button.pressed.connect(_on_restart)
 	share_button.pressed.connect(_on_share)
@@ -19,21 +19,20 @@ func _ready() -> void:
 	restart_button.grab_focus()
 
 func _on_restart() -> void:
+	GameManager.start_game(false)
 	get_tree().reload_current_scene()
 
 func _on_share() -> void:
 	var text := GameManager.get_share_text()
-	
-	# For web, use JavaScript interface
+
 	if OS.has_feature("web"):
-		JavaScriptBridge.eval("navigator.clipboard.writeText('%s')" % text)
-		# Or open share dialog if available
+		var escaped := text.replace("\\", "\\\\").replace("'", "\\'").replace("\n", "\\n")
+		JavaScriptBridge.eval("navigator.clipboard.writeText('%s')" % escaped)
 	else:
 		DisplayServer.clipboard_set(text)
-	
-	# Show feedback
-	share_button.text = "Copied!"
-	get_tree().create_timer(1.5).timeout.connect(func(): share_button.text = "Share")
+
+	share_button.text = tr("MENU_LABEL_SHARE") + "..."
+	get_tree().create_timer(1.5).timeout.connect(func(): share_button.text = tr("MENU_LABEL_SHARE"))
 
 func _on_menu() -> void:
 	STransitions.change_scene_with_transition(C.SCREENS.MENU)
