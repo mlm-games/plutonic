@@ -1,3 +1,11 @@
+## v1.1.2
+
+- chore: remove old flag
+- chore: make it retain data on uninstall (for #15)
+- chore: extract 1.2 and fns, web save improvement
+- chore: add for play-rel
+
+
 ## v1.1.1
 
 

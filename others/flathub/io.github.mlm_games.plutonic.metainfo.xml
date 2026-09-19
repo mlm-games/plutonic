@@ -38,6 +38,16 @@
     </screenshot> -->
   </screenshots>
   <releases>
+    <release version="1.1.2" date="2026-09-19" type="stable">
+      <description>
+        <ul>
+          <li>chore: remove old flag</li>
+          <li>chore: make it retain data on uninstall (for #15)</li>
+          <li>chore: extract 1.2 and fns, web save improvement</li>
+          <li>chore: add for play-rel</li>
+        </ul>
+      </description>
+    </release>
     <release version="1.1.1" date="2026-07-19" type="stable">
       <description>
         <ul/>
