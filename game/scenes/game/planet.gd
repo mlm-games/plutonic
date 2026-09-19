@@ -9,7 +9,6 @@ signal merged(resulting_tier: int)
 var tier: int = 0: set = set_tier
 var is_merging := false
 var has_been_shot := false
-var has_collided_once := false
 var touching: Dictionary = {}
 
 func _ready() -> void:
@@ -56,7 +55,6 @@ func _on_body_entered(other: Node) -> void:
 		return
 	if other is Planet and other.has_been_shot and not other.is_merging:
 		touching[other] = true
-		has_collided_once = true
 		if other.tier == tier and tier < C.PlanetType.SUN:
 			_attempt_merge(other)
 

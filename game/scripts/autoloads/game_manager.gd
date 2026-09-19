@@ -101,7 +101,6 @@ func save_game_state() -> void:
 				"ang_vel": p.angular_velocity,
 				"rot": p.rotation,
 				"has_been_shot": p.has_been_shot,
-				"has_collided_once": p.has_collided_once,
 			})
 
 	var current_tier: int = -1

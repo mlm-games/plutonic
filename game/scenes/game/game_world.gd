@@ -61,7 +61,6 @@ func _restore_game_state(data: Dictionary) -> void:
 		planet.global_position = Vector2(p_data.pos_x, p_data.pos_y)
 		planet.tier = p_data.tier
 		planet.has_been_shot = p_data.get("has_been_shot", true)
-		planet.has_collided_once = p_data.get("has_collided_once", true)
 		planet.rotation = p_data.get("rot", 0.0)
 		planet.freeze = false
 		planet.set_deferred("linear_velocity", Vector2(p_data.vel_x, p_data.vel_y))
