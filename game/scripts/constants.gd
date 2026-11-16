@@ -98,6 +98,13 @@ const PLANET_BOUNCE := 0.2
 
 const BUBBLE_RADIUS := 400.0
 const BUBBLE_CENTER := Vector2(540, 712)
+const BUBBLE_MAX_PLANET_SIZE := 0.4 # Largest planet may use this share of the bubble radius
+const BUBBLE_EXPAND_TIME := 0.6
+
+
+static func bubble_radius_for_tier(tier: int) -> float:
+	var safe_tier := clampi(tier, 0, PLANET_RADII.size() - 1)
+	return maxf(BUBBLE_RADIUS, PLANET_RADII[safe_tier] / BUBBLE_MAX_PLANET_SIZE)
 
 
 static func gravity_acceleration(pos: Vector2) -> Vector2:
@@ -108,8 +115,14 @@ static func gravity_acceleration(pos: Vector2) -> Vector2:
 	var force := to_center.normalized() * GRAVITY_STRENGTH
 	return Vector2(force.x, force.y / GRAVITY_Y_DIVISOR)
 
-const GRACE_PERIOD := 1.5 # Seconds before game over triggers
+const GRACE_PERIOD := 1.5 # Seconds before the last chance triggers
 const BOUNDARY_CHECK_MARGIN := 10.0 # Pixels outside bubble before warning
+
+const LAST_CHANCE_REST_SPEED := 30.0 # Pixels/second
+const LAST_CHANCE_MAX_SHOTS := 3
+const LAST_CHANCE_MIN_WAIT := 0.5 # Seconds after a shot before deciding
+const LAST_CHANCE_SETTLE_TIME := 2.0 # Seconds the board must stay still before deciding
+const LAST_CHANCE_MAX_WAIT := 6.0 # Seconds a shot may take before deciding anyway
 
 const MAX_SPAWN_TIER := 4
 

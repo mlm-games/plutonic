@@ -103,3 +103,19 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Pluto"
 horizontal_alignment = 1
+
+[node name="LastChanceLabel" type="Label" parent="." unique_id=884920113]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+offset_left = 40.0
+offset_top = 1240.0
+offset_right = 1040.0
+offset_bottom = 1360.0
+theme_override_colors/font_color = Color(1, 0.85, 0.25, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 14
+theme_override_font_sizes/font_size = 80
+text = "LAST CHANCE!"
+horizontal_alignment = 1
+vertical_alignment = 1

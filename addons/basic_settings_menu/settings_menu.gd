@@ -84,6 +84,17 @@ func _create_setting_control(parent: Container, category: String, setting_name: 
 			template = OPTION_CONTAINER
 			options = SettingsConstants.LOCALES
 		
+		"last_chance_score_gate":
+			template = OPTION_CONTAINER
+			options = {
+				-1: "Off",
+				0: "Always",
+				25: "25% of best",
+				50: "50% of best",
+				75: "75% of best",
+				100: "100% of best",
+			}
+
 		setting_name when setting_name in ["Master", "Music", "Sfx"]:
 			template = SLIDER_CONTAINER
 		_:

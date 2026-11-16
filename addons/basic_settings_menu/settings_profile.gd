@@ -7,6 +7,7 @@ class_name SettingsProfile extends Resource
 #@export_group("Gameplay")
 @export var gameplay: Dictionary = {
 	"max_fps": 60,
+	"last_chance_score_gate": 50,
 }
 #@export_group("Video")
 @export var video: Dictionary = {

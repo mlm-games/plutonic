@@ -56,10 +56,18 @@ func end_game() -> void:
 	clear_game_save()
 	game_over_triggered.emit()
 
+func can_use_last_chance() -> bool:
+	var score_gate: int = SettingsManager.get_setting("gameplay", "last_chance_score_gate", 50)
+	if score_gate < 0:
+		return false
+	return score >= previous_high_score * (score_gate / 100.0)
+
 func is_new_best() -> bool:
 	return score > previous_high_score and score > 0
 
 func add_score(planet_tier: int) -> void:
+	if not is_game_active:
+		return
 	if planet_tier >= 0 and planet_tier < C.PLANET_SCORES.size():
 		score += C.PLANET_SCORES[planet_tier]
 
@@ -85,6 +93,7 @@ func save_game_state() -> void:
 	var shooter = scene.get_node_or_null("%Shooter") as Shooter
 	if not shooter:
 		return
+	var bubble = scene.get_node_or_null("%Bubble") as Bubble
 
 	var planets_data: Array = []
 	for node in get_tree().get_nodes_in_group("planets"):
@@ -113,6 +122,7 @@ func save_game_state() -> void:
 		"high_score": high_score,
 		"next_planet_tier": shooter.next_planet_tier,
 		"current_planet_tier": current_tier,
+		"bubble_radius": bubble.get_target_radius() if bubble else C.BUBBLE_RADIUS,
 		"planets": planets_data,
 		"timestamp": Time.get_unix_time_from_system(),
 	}

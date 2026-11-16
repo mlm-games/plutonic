@@ -5,6 +5,9 @@ extends Control
 @onready var next_preview: TextureRect = %NextPreview
 @onready var next_label: Label = %NextLabel
 @onready var pause_button: Button = %PauseButton
+@onready var last_chance_label: Label = %LastChanceLabel
+
+var _last_chance_tween: Tween = null
 
 func _ready() -> void:
 	GameManager.score_changed.connect(_on_score_changed)
@@ -25,6 +28,21 @@ func _on_score_changed(new_score: int) -> void:
 
 func _on_high_score_changed(new_high: int) -> void:
 	high_score_label.text = tr("GAME_OBJECTIVE_HIGH_SCORE") + ": %d" % new_high
+
+func show_last_chance(active: bool) -> void:
+	if _last_chance_tween:
+		_last_chance_tween.kill()
+		_last_chance_tween = null
+
+	last_chance_label.text = tr("GAME_OBJECTIVE_LAST_CHANCE")
+	last_chance_label.visible = active
+	last_chance_label.modulate.a = 1.0
+	if not active:
+		return
+
+	_last_chance_tween = create_tween().set_loops()
+	_last_chance_tween.tween_property(last_chance_label, "modulate:a", 0.35, 0.5)
+	_last_chance_tween.tween_property(last_chance_label, "modulate:a", 1.0, 0.5)
 
 func update_next_preview(tier: int) -> void:
 	_update_preview(next_preview, next_label, tier)

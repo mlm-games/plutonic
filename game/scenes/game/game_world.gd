@@ -5,6 +5,12 @@ extends Node2D
 @onready var hud: Control = $CanvasLayer/GameHUD
 @onready var background: ColorRect = $Background
 
+var is_last_chance := false
+
+var _last_chance_elapsed := 0.0
+var _settled_time := 0.0
+var _last_chance_shots: Array[Planet] = []
+
 func _ready() -> void:
 	_setup_background()
 	GameManager.start_game(not GameManager.pending_load_data.is_empty())
@@ -38,8 +44,9 @@ func _setup_background() -> void:
 		star.scale = Vector2.ONE * randf_range(0.5, 2.0)
 		background.add_child(star)
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	_apply_central_gravity()
+	_update_last_chance(delta)
 
 func _apply_central_gravity() -> void:
 	for planet : Planet in get_tree().get_nodes_in_group("planets"):
@@ -48,6 +55,8 @@ func _apply_central_gravity() -> void:
 		planet.apply_central_force(C.gravity_acceleration(planet.global_position) * planet.mass)
 
 func _restore_game_state(data: Dictionary) -> void:
+	bubble.restore_radius(data.get("bubble_radius", C.BUBBLE_RADIUS))
+
 	for p in get_tree().get_nodes_in_group("planets"):
 		if p.get_parent() != shooter.current_planet_holder:
 			p.queue_free()
@@ -68,13 +77,71 @@ func _restore_game_state(data: Dictionary) -> void:
 
 	hud.update_next_preview(shooter.next_planet_tier)
 
-func _on_planet_shot(_planet: Planet) -> void:
+func _on_planet_shot(planet: Planet) -> void:
 	GameManager.save_game_state()
+	if not is_last_chance or _last_chance_shots.size() >= C.LAST_CHANCE_MAX_SHOTS:
+		return
+	_last_chance_shots.append(planet)
+	_last_chance_elapsed = 0.0
+	_settled_time = 0.0
 
 func _on_planet_escaped(_planet: Planet) -> void:
-	if GameManager.is_game_active:
-		GameManager.end_game()
-		_show_game_over()
+	if not GameManager.is_game_active or is_last_chance:
+		return
+	if not GameManager.can_use_last_chance():
+		_end_run()
+		return
+	_start_last_chance()
+
+func _start_last_chance() -> void:
+	is_last_chance = true
+	_last_chance_elapsed = 0.0
+	_settled_time = 0.0
+	_last_chance_shots.clear()
+	hud.show_last_chance(true)
+
+func _update_last_chance(delta: float) -> void:
+	if not is_last_chance or not GameManager.is_game_active:
+		return
+
+	if not bubble.has_escaped_planets():
+		_end_last_chance()
+		return
+
+	if _last_chance_shots.is_empty():
+		return
+
+	_last_chance_elapsed += delta
+	if _last_chance_elapsed < C.LAST_CHANCE_MIN_WAIT:
+		return
+
+	if _planets_at_rest():
+		_settled_time += delta
+	else:
+		_settled_time = 0.0
+
+	if _settled_time < C.LAST_CHANCE_SETTLE_TIME and _last_chance_elapsed < C.LAST_CHANCE_MAX_WAIT:
+		return
+
+	_end_last_chance()
+	_end_run()
+
+func _planets_at_rest() -> bool:
+	for planet: Planet in get_tree().get_nodes_in_group("planets"):
+		if not planet.has_been_shot:
+			continue
+		if planet.linear_velocity.length() > C.LAST_CHANCE_REST_SPEED:
+			return false
+	return true
+
+func _end_last_chance() -> void:
+	is_last_chance = false
+	_last_chance_shots.clear()
+	hud.show_last_chance(false)
+
+func _end_run() -> void:
+	GameManager.end_game()
+	_show_game_over()
 
 func _on_next_planet_tier_changed(tier: int) -> void:
 	hud.update_next_preview(tier)
